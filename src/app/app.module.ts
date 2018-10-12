@@ -8,8 +8,12 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { Api, Sessions } from '../providers/index';
+import { AgendaPage } from "../pages/agenda/agenda";
+import { AccueilPage } from "../pages/accueil/accueil";
+import { PresentateursPage } from "../pages/presentateurs/presentateurs";
+import { SessionsPage } from "../pages/sessions/sessions";
+import { TelephonePage } from "../pages/telephone/telephone";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -18,7 +22,11 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    AgendaPage,
+    AccueilPage,
+    PresentateursPage,
+    SessionsPage,
+    TelephonePage
   ],
   imports: [
     BrowserModule,
@@ -35,7 +43,11 @@ export function createTranslateLoader(http: HttpClient) {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    AgendaPage,
+    AccueilPage,
+    PresentateursPage,
+    SessionsPage,
+    TelephonePage
   ],
   providers: [
     Api,
