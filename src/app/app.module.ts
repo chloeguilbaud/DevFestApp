@@ -8,7 +8,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { MyApp } from './app.component';
-import { Api, Sessions } from '../providers/index';
+import { Api, Sessions, Presentateurs } from '../providers/index';
 import { AgendaPage } from "../pages/agenda/agenda";
 import { AccueilPage } from "../pages/accueil/accueil";
 import { PresentateursPage } from "../pages/presentateurs/presentateurs";
@@ -52,6 +52,7 @@ export function createTranslateLoader(http: HttpClient) {
   providers: [
     Api,
     Sessions,
+    Presentateurs,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
