@@ -12,4 +12,11 @@
 
 <ion-content padding>
   <h1>Sessions</h1>
+  <ion-list>
+    <ion-item-sliding *ngFor="let session of sessions">
+      <button ion-item (click)="openItem(session)">
+        {{ session.name }}
+      </button>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
