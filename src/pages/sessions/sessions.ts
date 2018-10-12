@@ -8,8 +8,14 @@ import { Session } from '../../entities/session';
 })
 export class SessionsPage {
 
-  constructor(public navCtrl: NavController) {
+  sessions: Session[];
 
+  constructor(public navCtrl: NavController) {
+    this.sessions = [];
+    this.sessions.push(new Session('Première session'));
+    this.sessions.push(new Session('Deuxième session'));
+    this.sessions.push(new Session('Troixième session'));
+    this.sessions.push(new Session('Quatrième session'));
   }
 
   openItem(session: Session) {

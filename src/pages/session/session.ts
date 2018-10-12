@@ -10,11 +10,10 @@ import { Session } from '../../entities/session';
   templateUrl: 'session.html'
 })
 export class SessionPage {
-  session: any;
+  session: Session;
 
   constructor(public navCtrl: NavController, navParams: NavParams, conferences: Sessions) {
-    // this.session = navParams.get('session');
-    this.session = new Session('test');
+    this.session = navParams.get('session');
   }
 
 }

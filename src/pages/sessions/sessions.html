@@ -13,19 +13,9 @@
 <ion-content padding>
   <h1>Sessions</h1>
   <ion-list>
-    <ion-item-sliding>
-      <button ion-item (click)="openItem()">
-        Je suis un élément de la liste
-      </button>
-    </ion-item-sliding>
-    <ion-item-sliding>
-      <button ion-item (click)="openItem()">
-        Je suis un élément de la liste
-      </button>
-    </ion-item-sliding>
-    <ion-item-sliding>
-      <button ion-item (click)="openItem()">
-        Je suis un élément de la liste
+    <ion-item-sliding *ngFor="let session of sessions">
+      <button ion-item (click)="openItem(session)">
+        {{ session.name }}
       </button>
     </ion-item-sliding>
   </ion-list>
