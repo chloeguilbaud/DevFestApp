@@ -6,7 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { AgendaPage } from "../pages/agenda/agenda";
-import { ConferencePage } from "../pages/conference/conference";
+import { AccueilPage } from "../pages/accueil/accueil";
 import { PresentateursPage } from "../pages/presentateurs/presentateurs";
 import { SessionsPage } from "../pages/sessions/sessions";
 import { TelephonePage } from "../pages/telephone/telephone";
@@ -15,7 +15,7 @@ import { TelephonePage } from "../pages/telephone/telephone";
   declarations: [
     MyApp,
     AgendaPage,
-    ConferencePage,
+    AccueilPage,
     PresentateursPage,
     SessionsPage,
     TelephonePage
@@ -28,7 +28,7 @@ import { TelephonePage } from "../pages/telephone/telephone";
   entryComponents: [
     MyApp,
     AgendaPage,
-    ConferencePage,
+    AccueilPage,
     PresentateursPage,
     SessionsPage,
     TelephonePage
