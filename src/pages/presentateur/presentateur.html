@@ -10,5 +10,13 @@
 <ion-content>
   <div class="presentateur-page" padding>
     <h2>{{ presentateur.prenom }} {{ presentateur.nom }}</h2>
+    <h4>Sessions</h4>
+    <ion-list>
+      <ion-item-sliding *ngFor="let session of presentateur.sessions">
+        <button ion-item (click)="openItem(session)">
+          {{ session.name }}
+        </button>
+      </ion-item-sliding>
+    </ion-list>
   </div>
 </ion-content>
