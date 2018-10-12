@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+
 import { NavController } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 
 import {Schedule} from '../../providers';
 import {HttpErrorResponse} from '@angular/common/http';
@@ -12,9 +14,12 @@ export class AccueilPage {
 
   public datedebut: String;
   public datefin: String;
+  public hidedate: boolean;
   public serveurerror: String;
 
-  constructor(public navCtrl: NavController, public schedule: Schedule) {
+  constructor(public navCtrl: NavController, public schedule: Schedule, private alertCtrl: AlertController) {
+
+    this.hidedate = false;
 
     this.schedule.query("schedule")
       .subscribe((data: any) => {
@@ -23,14 +28,18 @@ export class AccueilPage {
           console.log(this.datedebut, this.datefin);
         },
           error => {
-        this.serveurerror = error
-            console.log("test", this.serveurerror);
-            this.handleError(error);
+            this.handelError(error);
           } // error path
       );
   }
 
-   private handleError(error: HttpErrorResponse) {
+  private handelError(error: any) {
+    this.hidedate = true;
+    this.findError(error);
+    this.presentAlert(this.serveurerror);
+  }
+
+   private findError(error: HttpErrorResponse) {
      if (error.error instanceof ErrorEvent) {
        // A client-side or network error occurred. Handle it accordingly.
        console.error('An error occurred:', error.error.message);
@@ -45,10 +54,16 @@ export class AccueilPage {
      }
      // return an observable with a user-facing error message
      console.log("alors la...");
-     this.serveurerror = "Un truc vient de se passer... Mais on ne sais pas quoi... Essaie plus tard ?"
-
-     /*return throwError (
-       'Something bad happened; please try again later.');*/
+     this.serveurerror = "Un truc vient de se passer... Mais on ne sais pas quoi... Essaie plus tard ? ;)"
    };
+
+  presentAlert(error: String) {
+    let alert = this.alertCtrl.create({
+      title: 'Ho non!',
+      subTitle: "" + error,
+      buttons: ['Ok']
+    });
+    alert.present();
+  }
 
 }
