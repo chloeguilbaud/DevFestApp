@@ -5,7 +5,7 @@ import { Platform, MenuController, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { ConferencePage } from '../pages/conference/conference';
+//import { AccueilPage } from '../pages/accueil/accueil';
 import { SessionsPage } from '../pages/sessions/sessions';
 import { PresentateursPage } from '../pages/presentateurs/presentateurs';
 import { TelephonePage } from '../pages/telephone/telephone';
@@ -18,7 +18,7 @@ export class MyApp {
 
   @ViewChild(Nav) nav: Nav;
 
-  rootPage:any = ConferencePage;
+  //rootPage:any = AccueilPage;
 
   pages: Array<{ title: string, component: any}>;
 
@@ -38,7 +38,7 @@ export class MyApp {
 
     // List des pages permettant la création du menu
     this.pages = [
-      { title: 'Conférence', component: ConferencePage },
+      //{ title: 'DevFest', component: AccueilPage },
       { title: 'Sessions', component: SessionsPage },
       { title: 'Présentateurs', component: PresentateursPage },
       { title: 'Téléphone', component: TelephonePage },
