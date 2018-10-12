@@ -15,3 +15,7 @@
 ## TODO
 Gestion du mode déconnecté
 Gestion des erreurs
+
+## Documentation a rédiger
+- Error handler
+- choix de conception

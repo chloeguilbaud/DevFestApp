@@ -14,6 +14,7 @@ import { AccueilPage } from "../pages/accueil/accueil";
 import { PresentateursPage } from "../pages/presentateurs/presentateurs";
 import { SessionsPage } from "../pages/sessions/sessions";
 import { TelephonePage } from "../pages/telephone/telephone";
+import {Schedule} from "../providers/schedule/schedule";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -52,6 +53,7 @@ export function createTranslateLoader(http: HttpClient) {
   providers: [
     Api,
     Sessions,
+    Schedule,
     Presentateurs,
     StatusBar,
     SplashScreen,
