@@ -15,6 +15,7 @@ import { PresentateursPage } from "../pages/presentateurs/presentateurs";
 import { SessionsPage } from "../pages/sessions/sessions";
 import { TelephonePage } from "../pages/telephone/telephone";
 import {Schedule} from "../providers/schedule/schedule";
+import { SessionsHandler } from '../manager/session/session';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -57,6 +58,7 @@ export function createTranslateLoader(http: HttpClient) {
     Presentateurs,
     StatusBar,
     SplashScreen,
+    SessionsHandler,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
