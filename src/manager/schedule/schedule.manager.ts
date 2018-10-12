@@ -42,8 +42,7 @@ export class ScheduleManager {
   }
 
   private handelError(error: any) {
-    let errMsg: String;
-    errMsg = this.findError(error);
+    let errMsg = this.findError(error);
     this.presentAlert(errMsg);
   }
 
