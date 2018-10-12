@@ -24,7 +24,6 @@ export class AccueilPage {
     }).catch(() => {
       this.hidedate = true;
     });
-      console.log(scheduleM.getDevFestDates());
 
   }
 

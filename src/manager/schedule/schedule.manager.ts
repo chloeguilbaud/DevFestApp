@@ -15,7 +15,7 @@ export class ScheduleManager {
   /**
    * Gives Promise :
    *  - resolve : datedebut and datefin
-   *  - reject : error
+   *  - reject : err, errorMsg
    */
   public getDevFestDates() {
 
@@ -34,7 +34,7 @@ export class ScheduleManager {
           },
           error => {
             this.handelError(error);
-            return reject({error: true});
+            return reject({err: true, errorMsg: error});
           } // error path
         );
     });
