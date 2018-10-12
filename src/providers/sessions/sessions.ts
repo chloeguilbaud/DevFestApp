@@ -9,7 +9,7 @@ export class Sessions {
   constructor(public api: Api) { }
 
   query(params?: any) {
-    return this.api.get('/sessions', params);
+    return this.api.get('sessions', params);
   }
 
   add(item: Session) {

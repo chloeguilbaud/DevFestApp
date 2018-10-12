@@ -14,9 +14,11 @@ import { AccueilPage } from "../pages/accueil/accueil";
 import { PresentateursPage } from "../pages/presentateurs/presentateurs";
 import { SessionsPage } from "../pages/sessions/sessions";
 import { TelephonePage } from "../pages/telephone/telephone";
-import {Schedule} from "../providers/schedule/schedule";
-import {ScheduleManager} from "../manager/schedule/schedule.manager";
-import {QueryErrorHandler} from "../manager/error.handler/query.error.handler";
+
+import { Schedule } from "../providers/schedule/schedule";
+import { QueryErrorHandler } from "../manager/error.handler/query.error.handler";
+import { SessionsHandler } from '../manager/session/session';
+import { ScheduleManager } from "../manager/schedule/schedule.manager";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -61,6 +63,7 @@ export function createTranslateLoader(http: HttpClient) {
     QueryErrorHandler,
     StatusBar,
     SplashScreen,
+    SessionsHandler,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
