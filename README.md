@@ -11,3 +11,7 @@
 
 ## Run Ionic Project
 `ionic serve`
+
+## TODO
+Gestion du mode déconnecté
+Gestion des erreurs
