@@ -7,6 +7,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+import { Device } from '@ionic-native/device';
+import { Network } from '@ionic-native/network';
+
 import { MyApp } from './app.component';
 import { Api, Sessions, Presentateurs } from '../providers/index';
 import { AgendaPage } from "../pages/agenda/agenda";
@@ -66,6 +69,8 @@ export function createTranslateLoader(http: HttpClient) {
     SplashScreen,
     SessionsHandler,
     PresentateursHandler,
+    Device,
+    Network,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
