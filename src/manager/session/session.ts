@@ -35,6 +35,8 @@ export class SessionsHandler {
                         speakersObject.push(new Presentateur(
                             response[speakers[i]].id,
                             response[speakers[i]].name,
+                            response[speakers[i]].bio,
+                            response[speakers[i]].photoUrl.indexOf('/') == 0 ? response[speakers[i]].photoUrl.substring(1) : response[speakers[i]].photoUrl,     
                         ));
                     }
                     res(speakersObject);

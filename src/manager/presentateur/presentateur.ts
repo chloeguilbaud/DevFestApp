@@ -18,6 +18,8 @@ export class PresentateursHandler {
                     presentateurs.push(new Presentateur(
                         response[key].id,
                         response[key].name,
+                        response[key].bio,
+                        response[key].photoUrl.indexOf('/') == 0 ? response[key].photoUrl.substring(1) : response[key].photoUrl,          
                     ));
                 }
                 res(presentateurs);
@@ -55,6 +57,8 @@ export class PresentateursHandler {
                         const presentateur = new Presentateur(
                             response[key].id,
                             response[key].name,
+                            response[key].bio,
+                            response[key].photoUrl.indexOf('/') == 0 ? response[key].photoUrl.substring(1) : response[key].photoUrl,     
                             []
                         );
                         getSessions(presentateur);
