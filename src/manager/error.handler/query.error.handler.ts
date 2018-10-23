@@ -17,6 +17,9 @@ export class QueryErrorHandler {
 
   }
 
+  /*
+  Enables connexion problem management and presents an alert.
+   */
   public handel(error: any) {
     let errMsg = this.findError(error);
     console.error("Impossible de joindre le serveur");
@@ -36,11 +39,12 @@ export class QueryErrorHandler {
         `body was: ${error.error}`);
       return "Requête incorrecte envoyée au serveur. Veuillez contacter le support."
     }
-    // return an observable with a user-facing error message
-    /*console.log("alors la...");
-    this.serveurerror = "Un truc vient de se passer... Mais on ne sais pas quoi... Essaie plus tard ? ;)"*/
   };
 
+  /**
+   * Presents an alert indicating the connexion error.
+   * @param {String} error the error message
+   */
   private presentAlert(error: String) {
     let alert = this.alertCtrl.create({
       title: 'Ho non!',

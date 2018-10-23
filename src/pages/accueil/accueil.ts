@@ -18,6 +18,7 @@ export class AccueilPage {
   constructor(public navCtrl: NavController, public scheduleM: ScheduleManager) {
 
     this.hidedate = false;
+    // Getting the devfest dates
     scheduleM.getDevFestDates().then((res) => {
       this.datedebut = res["debut"];
       this.datefin = res["fin"];
