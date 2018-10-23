@@ -9,6 +9,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { Device } from '@ionic-native/device';
 import { Network } from '@ionic-native/network';
+import { Camera } from '@ionic-native/camera';
 
 import { MyApp } from './app.component';
 import { Api, Sessions, Presentateurs } from '../providers/index';
@@ -17,6 +18,7 @@ import { AccueilPage } from "../pages/accueil/accueil";
 import { PresentateursPage } from "../pages/presentateurs/presentateurs";
 import { SessionsPage } from "../pages/sessions/sessions";
 import { TelephonePage } from "../pages/telephone/telephone";
+import { NotesPage } from "../pages/notes/notes";
 
 import { Schedule } from "../providers/schedule/schedule";
 import { QueryErrorHandler } from "../manager/error.handler/query.error.handler";
@@ -34,7 +36,8 @@ export function createTranslateLoader(http: HttpClient) {
     AccueilPage,
     PresentateursPage,
     SessionsPage,
-    TelephonePage
+    TelephonePage,
+    NotesPage
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,8 @@ export function createTranslateLoader(http: HttpClient) {
     AccueilPage,
     PresentateursPage,
     SessionsPage,
-    TelephonePage
+    TelephonePage,
+    NotesPage
   ],
   providers: [
     Api,
@@ -69,6 +73,7 @@ export function createTranslateLoader(http: HttpClient) {
     SessionsHandler,
     Device,
     Network,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

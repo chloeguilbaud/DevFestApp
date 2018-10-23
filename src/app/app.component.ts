@@ -11,6 +11,8 @@ import { PresentateursPage } from '../pages/presentateurs/presentateurs';
 import { TelephonePage } from '../pages/telephone/telephone';
 import { AgendaPage } from '../pages/agenda/agenda';
 
+import {NotesPage} from "../pages/notes/notes";
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -18,7 +20,7 @@ export class MyApp {
 
   @ViewChild(Nav) nav: Nav;
 
-  rootPage:any = AccueilPage;
+  rootPage:any = NotesPage;
 
   pages: Array<{ title: string, component: any}>;
 
@@ -47,8 +49,8 @@ export class MyApp {
 
   }
 
-  // Called on menu item click
-  openPage(page) {
+    // Called on menu item click
+    openPage(page) {
     // close the menu when clicking a link from the menu
     this.menu.close();
     // navigate to the new page if it is not the current page

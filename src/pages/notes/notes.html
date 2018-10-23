@@ -1,0 +1,38 @@
+<ion-header>
+
+  <!-- Navigation bar -->
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Notes</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <h1>Titre de session</h1>
+
+  <button ion-button block outline style="text-transform: none;">Enregistrer</button>
+  <ion-textarea id="notes_field" placeholder="Mes tites notes..." autocomplete="on" clearInput="on"></ion-textarea>
+
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col col-3>
+        <button ion-button icon-only>
+          <!-- Advanced: explicity set the icon for each platform -->
+          <ion-icon ios="ios-camera" md="md-camera"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col col-3>
+        <button ion-button icon-only>
+          <!-- Advanced: explicity set the icon for each platform -->
+          <ion-icon ios="ios-image" md="md-image"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>
