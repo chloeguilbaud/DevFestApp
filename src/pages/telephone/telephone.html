@@ -11,5 +11,35 @@
 </ion-header>
 
 <ion-content padding>
+
   <h1>Telephone</h1>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-4>Platform</ion-col>
+      <ion-col col-8 *ngIf="device_platform">{{device_platform}}</ion-col>
+      <ion-col col-8 *ngIf="!device_platform">{{msg_error}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-4>Version</ion-col>
+      <ion-col col-8 *ngIf="os_version">{{os_version}}</ion-col>
+      <ion-col col-8 *ngIf="!os_version">{{msg_error}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-4>UUID</ion-col>
+      <ion-col col-8 *ngIf="device_uuid">{{device_uuid}}</ion-col>
+      <ion-col col-8 *ngIf="!device_uuid">{{msg_error}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-4>Model</ion-col>
+      <ion-col col-8 *ngIf="device_model">{{device_model}}</ion-col>
+      <ion-col col-8 *ngIf="!device_model">{{msg_error}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-4>Connexion</ion-col>
+      <ion-col col-8 *ngIf="device_connection_type">{{device_connection_type}}</ion-col>
+      <ion-col col-8 *ngIf="!device_connection_type">{{msg_error}}</ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>
