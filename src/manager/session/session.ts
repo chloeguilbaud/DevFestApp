@@ -18,6 +18,10 @@ export class SessionsHandler {
                     session.push(new Session(
                         response[key].id,
                         response[key].title,
+                        response[key].type,
+                        response[key].image,
+                        [],
+                        response[key].description,
                     ));
                 }
                 res(session);
@@ -53,7 +57,10 @@ export class SessionsHandler {
                         const session = new Session(
                             response[key].id,
                             response[key].title,
-                            []
+                            response[key].type,
+                            response[key].image,
+                            [],
+                            response[key].description,
                         );
                         getSpeakers(session, response[key].speakers);
                         res(session);

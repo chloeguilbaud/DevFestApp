@@ -39,6 +39,10 @@ export class PresentateursHandler {
                                 sessionsObject.push(new Session(
                                     response[key].id,
                                     response[key].title,
+                                    response[key].type,
+                                    response[key].image,
+                                    [],
+                                    response[key].description,
                                 ));
                             }
                         }
