@@ -14,7 +14,9 @@ import { AccueilPage } from "../pages/accueil/accueil";
 import { PresentateursPage } from "../pages/presentateurs/presentateurs";
 import { SessionsPage } from "../pages/sessions/sessions";
 import { TelephonePage } from "../pages/telephone/telephone";
+
 import { Schedule } from "../providers/schedule/schedule";
+import { QueryErrorHandler } from "../manager/error.handler/query.error.handler";
 import { SessionsHandler } from '../manager/session/session';
 import { ScheduleManager } from "../manager/schedule/schedule.manager";
 
@@ -58,6 +60,7 @@ export function createTranslateLoader(http: HttpClient) {
     Schedule,
     Presentateurs,
     ScheduleManager,
+    QueryErrorHandler,
     StatusBar,
     SplashScreen,
     SessionsHandler,

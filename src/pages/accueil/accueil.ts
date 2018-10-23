@@ -23,8 +23,6 @@ export class AccueilPage {
       this.datefin = res["fin"];
     }).catch(() => {
       this.hidedate = true;
-      console.log("test");
-      console.log(this.hidedate);
     });
 
   }
