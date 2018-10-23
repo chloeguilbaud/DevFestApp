@@ -17,7 +17,7 @@ export class PresentateurPage {
     this.presentateur = navParams.get('presentateur');
     // TODO: this.presentateurs.get(presentateur);
     // Mock:
-    this.presentateur = new Presentateur('Lagaff', 'Vincent', [new Session('J\'ai un beau crâne')]);
+    // this.presentateur = new Presentateur('Lagaff', 'Vincent', [new Session('J\'ai un beau crâne')]);
     // EndMock
   }
 

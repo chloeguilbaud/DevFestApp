@@ -17,11 +17,6 @@ export class SessionsPage {
     sessionsHandler.query().then((response: Session[]) => {
       this.sessions = response;
     });
-    // TODO: this.sessions.request();
-    // Mock:
-    // this.sessions = [];
-    // this.sessions.push(new Session('J\'ai un beau crâne', [new Presentateur('Lagaff', 'Vincent')]));
-    // // EndMock
   }
 
   openItem(session: Session) {

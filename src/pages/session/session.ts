@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Sessions } from '../../providers';
 import { Session } from '../../entities/session';
 import { Presentateur } from '../../entities/presentateur';
+import { SessionsHandler } from '../../manager/session/session';
 
 @IonicPage()
 @Component({
@@ -13,12 +14,11 @@ import { Presentateur } from '../../entities/presentateur';
 export class SessionPage {
   session: Session;
 
-  constructor(public navCtrl: NavController, navParams: NavParams, conferences: Sessions) {
+  constructor(public navCtrl: NavController, navParams: NavParams, public sessionsHandler: SessionsHandler, conferences: Sessions) {
     this.session = navParams.get('session');
-    // TODO: this.sessions.get(session);
-    // Mock:
-    this.session = new Session('J\'ai un beau crâne', [new Presentateur('Lagaff', 'Vincent')]);
-    // EndMock
+    sessionsHandler.getSession(this.session.id).then((response: Session) => {
+      this.session = response;
+    });
   }
 
   openItem(presentateur: any) {

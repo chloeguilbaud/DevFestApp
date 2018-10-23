@@ -9,7 +9,7 @@ export class Presentateurs {
   constructor(public api: Api) { }
 
   query(params?: any) {
-    return this.api.get('/sessions', params);
+    return this.api.get('speakers', params);
   }
 
   add(item: Presentateur) {

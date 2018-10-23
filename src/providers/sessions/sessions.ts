@@ -12,10 +12,10 @@ export class Sessions {
     return this.api.get('sessions', params);
   }
 
-  add(item: Session) {
+  add(session: Session) {
   }
 
-  delete(item: Session) {
+  delete(session: Session) {
   }
 
 }
