@@ -16,6 +16,7 @@
 ## TODO
 Gestion du mode déconnecté
 Gestion des erreurs
+Balise HTML
 
 ## Documentation a rédiger
 - Error handler
