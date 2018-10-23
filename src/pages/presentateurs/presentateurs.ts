@@ -15,7 +15,7 @@ export class PresentateursPage {
     // TODO: this.presentateurs.request();
     // Mock:
     this.presentateurs = [];
-    this.presentateurs.push(new Presentateur('Lagaff', 'Vincent', [new Session('J\'ai un beau crâne')]));
+    // this.presentateurs.push(new Presentateur('Lagaff', 'Vincent', [new Session('J\'ai un beau crâne')]));
     // EndMock
   }
 

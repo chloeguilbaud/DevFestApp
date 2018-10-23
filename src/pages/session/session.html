@@ -14,7 +14,7 @@
     <ion-list>
       <ion-item-sliding *ngFor="let presentateur of session.presentateurs">
         <button ion-item (click)="openItem(presentateur)">
-          {{ presentateur.prenom }} {{ presentateur.nom }}
+          {{ presentateur.nom }}
         </button>
       </ion-item-sliding>
     </ion-list>
