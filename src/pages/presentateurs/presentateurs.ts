@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Presentateur } from '../../entities/presentateur';
 import { Session } from '../../entities/session';
+import { PresentateursHandler } from '../../manager/presentateur/presentateur';
 
 @Component({
   selector: 'page-presentateurs',
@@ -11,12 +12,11 @@ export class PresentateursPage {
 
   presentateurs: Presentateur[];
 
-  constructor(public navCtrl: NavController) {
-    // TODO: this.presentateurs.request();
-    // Mock:
+  constructor(public navCtrl: NavController, public presentatateurHandler: PresentateursHandler) {
     this.presentateurs = [];
-    // this.presentateurs.push(new Presentateur('Lagaff', 'Vincent', [new Session('J\'ai un beau crâne')]));
-    // EndMock
+    presentatateurHandler.query().then((response: Presentateur[]) => {
+      this.presentateurs = response;
+    });
   }
 
   openItem(presentateur: Presentateur) {

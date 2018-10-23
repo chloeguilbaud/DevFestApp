@@ -18,6 +18,10 @@ export class SessionsHandler {
                     session.push(new Session(
                         response[key].id,
                         response[key].title,
+                        response[key].type,
+                        response[key].image,
+                        [],
+                        response[key].description,
                     ));
                 }
                 res(session);
@@ -31,12 +35,12 @@ export class SessionsHandler {
             return new Promise((res, rej) => {
                 this.presentateurs.query().subscribe((response: any) => {
                     const speakersObject: Presentateur[] = [];
-                    console.log(response);
-                    console.log(speakers);
                     for (let i = 0; i < speakers.length; i++) {
                         speakersObject.push(new Presentateur(
                             response[speakers[i]].id,
                             response[speakers[i]].name,
+                            response[speakers[i]].bio,
+                            response[speakers[i]].photoUrl.indexOf('/') == 0 ? response[speakers[i]].photoUrl.substring(1) : response[speakers[i]].photoUrl,     
                         ));
                     }
                     res(speakersObject);
@@ -53,7 +57,10 @@ export class SessionsHandler {
                         const session = new Session(
                             response[key].id,
                             response[key].title,
-                            []
+                            response[key].type,
+                            response[key].image,
+                            [],
+                            response[key].description,
                         );
                         getSpeakers(session, response[key].speakers);
                         res(session);

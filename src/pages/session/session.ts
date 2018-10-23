@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { Sessions } from '../../providers';
 import { Session } from '../../entities/session';
-import { Presentateur } from '../../entities/presentateur';
 import { SessionsHandler } from '../../manager/session/session';
 
 @IonicPage()

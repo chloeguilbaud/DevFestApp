@@ -10,6 +10,9 @@
 <ion-content>
   <div class="presentateur-page" padding>
     <h2>{{ presentateur.nom }}</h2>
+    <img src="https://devfest.gdgnantes.com/{{ presentateur.img }}">
+    <h4>{{ presentateur.img }}</h4>
+    <p>{{ presentateur.bio }}</p>
     <h4>Sessions</h4>
     <ion-list>
       <ion-item-sliding *ngFor="let session of presentateur.sessions">
