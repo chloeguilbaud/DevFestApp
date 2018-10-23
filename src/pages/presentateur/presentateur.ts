@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { Presentateurs } from '../../providers';
 import { Presentateur } from '../../entities/presentateur';
-import { Session } from '../../entities/session';
+import { PresentateursHandler } from '../../manager/presentateur/presentateur';
 
 @IonicPage()
 @Component({
@@ -13,12 +13,11 @@ import { Session } from '../../entities/session';
 export class PresentateurPage {
   presentateur: Presentateur;
 
-  constructor(public navCtrl: NavController, navParams: NavParams, presentateurs: Presentateurs) {
+  constructor(public navCtrl: NavController, navParams: NavParams, public presentateursHandler: PresentateursHandler, presentateurs: Presentateurs) {
     this.presentateur = navParams.get('presentateur');
-    // TODO: this.presentateurs.get(presentateur);
-    // Mock:
-    // this.presentateur = new Presentateur('Lagaff', 'Vincent', [new Session('J\'ai un beau crâne')]);
-    // EndMock
+    presentateursHandler.getPresentateur(this.presentateur.id).then((response: Presentateur) => {
+      this.presentateur = response;
+    });
   }
 
   openItem(session: any) {

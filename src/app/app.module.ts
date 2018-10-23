@@ -18,6 +18,7 @@ import { TelephonePage } from "../pages/telephone/telephone";
 import { Schedule } from "../providers/schedule/schedule";
 import { QueryErrorHandler } from "../manager/error.handler/query.error.handler";
 import { SessionsHandler } from '../manager/session/session';
+import { PresentateursHandler } from '../manager/presentateur/presentateur'
 import { ScheduleManager } from "../manager/schedule/schedule.manager";
 
 export function createTranslateLoader(http: HttpClient) {
@@ -64,6 +65,7 @@ export function createTranslateLoader(http: HttpClient) {
     StatusBar,
     SplashScreen,
     SessionsHandler,
+    PresentateursHandler,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

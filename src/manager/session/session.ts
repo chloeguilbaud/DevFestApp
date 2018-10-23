@@ -31,8 +31,6 @@ export class SessionsHandler {
             return new Promise((res, rej) => {
                 this.presentateurs.query().subscribe((response: any) => {
                     const speakersObject: Presentateur[] = [];
-                    console.log(response);
-                    console.log(speakers);
                     for (let i = 0; i < speakers.length; i++) {
                         speakersObject.push(new Presentateur(
                             response[speakers[i]].id,
