@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AlertController } from 'ionic-angular';
 
 import { Schedule } from '../../providers';
-import {QueryErrorHandler} from "../error.handler/query.error.handler";
+import { QueryErrorHandler } from "../error.handler/query.error.handler";
 
 @Injectable()
 export class ScheduleManager {
@@ -31,7 +30,7 @@ export class ScheduleManager {
             return resolve(dates);
           },
           error => {
-            this.errorHandler.handel(error);
+            this.errorHandler.handle(error);
             return reject({err: true, errorMsg: error});
           } // error path
         );

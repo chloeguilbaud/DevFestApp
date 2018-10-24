@@ -20,7 +20,7 @@ export class QueryErrorHandler {
   /*
   Enables connexion problem management and presents an alert.
    */
-  public handel(error: any) {
+  public handle(error: any) {
     let errMsg = this.findError(error);
     console.error("Impossible de joindre le serveur");
     this.presentAlert(errMsg);
