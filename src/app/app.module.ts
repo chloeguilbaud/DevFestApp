@@ -26,6 +26,7 @@ import { QueryErrorHandler } from "../manager/error.handler/query.error.handler"
 import { SessionsHandler } from '../manager/session/session';
 import { PresentateursHandler } from '../manager/presentateur/presentateur'
 import { ScheduleManager } from "../manager/schedule/schedule.manager";
+import { ErrorAlertHandler } from "../manager/error.handler/error.alert.handler";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -70,6 +71,7 @@ export function createTranslateLoader(http: HttpClient) {
     Presentateurs,
     ScheduleManager,
     QueryErrorHandler,
+    ErrorAlertHandler,
     StatusBar,
     SplashScreen,
     SessionsHandler,
