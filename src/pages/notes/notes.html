@@ -20,7 +20,7 @@
   <ion-grid>
     <ion-row justify-content-center>
       <ion-col col-3>
-        <button ion-button icon-only (click)="getPhoto($event, camera.PictureSourceType.CAMERA)">
+        <button ion-button icon-only (click)="takePhotoFromCamera()">
           <!-- Advanced: explicity set the icon for each platform -->
           <ion-icon ios="ios-camera" md="md-camera"></ion-icon>
         </button>
@@ -35,6 +35,5 @@
   </ion-grid>
 
   <img [src]="imageSrc">
-  <img padding id="imt_atlantique" src="../../assets/imgs/imt-atlantique.png"/>
 
 </ion-content>

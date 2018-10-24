@@ -17,7 +17,7 @@ export class NotesPage {
 
   }
 
-  getPhoto(event, srcType) {
+  takePhotoFromCamera() {
 
    /* const options: CameraOptions = {
       quality: 100,
@@ -65,13 +65,14 @@ export class NotesPage {
       mediaType: this.camera.MediaType.PICTURE,
       allowEdit: true,
       correctOrientation: true,
-      saveToPhotoAlbum: true
+      saveToPhotoAlbum: true,
+      sourceType: this.camera.PictureSourceType.CAMERA
     };
     this.camera.getPicture(options) .then((imageData) => {
       // Spliting the file and the path from FILE_URI result
       let filename = imageData.substring(imageData.lastIndexOf('/')+1);
       let path =  imageData.substring(0,imageData.lastIndexOf('/')+1);
-      // Using the method readDataURL 
+      // Using the method readDataURL
       this.file.readAsDataURL(path, filename).then(res=> {
         this.imageSrc = res;
       } );
