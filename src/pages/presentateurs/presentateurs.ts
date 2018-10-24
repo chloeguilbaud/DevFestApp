@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { Presentateur } from '../../entities/presentateur';
 import { Session } from '../../entities/session';
 import { PresentateursHandler } from '../../manager/presentateur/presentateur';
+import { ErrorAlertHandler } from '../../manager/error.handler/error.alert.handler';
 
 @Component({
   selector: 'page-presentateurs',
@@ -12,11 +13,15 @@ export class PresentateursPage {
 
   presentateurs: Presentateur[];
 
-  constructor(public navCtrl: NavController, public presentatateurHandler: PresentateursHandler) {
+  constructor(public navCtrl: NavController,
+              public presentatateurHandler: PresentateursHandler,
+              public alertHandler: ErrorAlertHandler) {
     this.presentateurs = [];
     // Request all presentateurs
     presentatateurHandler.query().then((response: Presentateur[]) => {
       this.presentateurs = response;
+    }).catch((err) => {
+      this.alertHandler.presentAlert("Aie", "Impossible de récupérer les présentateurs", "Ok");
     });
   }
 
