@@ -5,11 +5,22 @@ import { Sessions } from '../../providers/sessions/sessions'
 import { Presentateur } from '../../entities/presentateur';
 import { Presentateurs } from '../../providers';
 
+/**
+ * Class SessionHandler
+ * 
+ * Handle all call to get or put Session's objects
+ */
 @Injectable()
 export class SessionsHandler {
 
     constructor(public sessions: Sessions, public presentateurs: Presentateurs) { }
 
+    /**
+     * Query
+     * 
+     * Request all Sessions
+     * @param params 
+     */
     query(params?: any) {
         return new Promise((res, rej) => {
             this.sessions.query(params).subscribe((response : any) => {
@@ -29,7 +40,14 @@ export class SessionsHandler {
         });
     }
 
+    /**
+     * getSession
+     * 
+     * Request a single session with depth 2
+     * @param id    Session id needed
+     */
     getSession(id: Number) {
+        // Function to get presentateur for sessions
         const getSpeakers = (session: Session, speakers?) => {
             if (!speakers) return;
             return new Promise((res, rej) => {
@@ -50,6 +68,7 @@ export class SessionsHandler {
             });
         };
         
+        // Get all sessions objects and pick the one needed
         return new Promise((res, rej) => {
             this.sessions.query().subscribe((response : any) => {
                 for (let key in response) {
@@ -71,10 +90,22 @@ export class SessionsHandler {
         });
     }
 
+    /**
+     * add
+     * 
+     * Add a session to the API
+     * @param session Session
+     */
     add(session: Session) {
         this.sessions.add(session);
     }
 
+    /**
+     * delete
+     * 
+     * Remove a Session from the API
+     * @param session Session
+     */
     delete(session: Session) {
         this.sessions.delete(session);
     }

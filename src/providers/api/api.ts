@@ -1,15 +1,12 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-/**
- * Api is a generic REST Api handler. Set your API url first.
- */
 @Injectable()
 export class Api {
+
   url: string = 'https://devfest-nantes-2018-api.cleverapps.io';
 
-  constructor(public http: HttpClient) {
-  }
+  constructor(public http: HttpClient) {}
 
   get(endpoint: string, params?: any, reqOpts?: any) {
     if (!reqOpts) {
@@ -18,7 +15,6 @@ export class Api {
       };
     }
 
-    // Support easy query params for GET requests
     if (params) {
       reqOpts.params = new HttpParams();
       for (let k in params) {

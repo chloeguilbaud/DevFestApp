@@ -14,12 +14,19 @@ export class PresentateurPage {
   presentateur: Presentateur;
 
   constructor(public navCtrl: NavController, navParams: NavParams, public presentateursHandler: PresentateursHandler, presentateurs: Presentateurs) {
+    // Get presentateur given in parameter from previous page
     this.presentateur = navParams.get('presentateur');
+    // Request given presentater from API
     presentateursHandler.getPresentateur(this.presentateur.id).then((response: Presentateur) => {
       this.presentateur = response;
     });
   }
 
+  /**
+   * Open Session page with given Session
+   * 
+   * @param session Session
+   */
   openItem(session: any) {
     this.navCtrl.push('SessionPage', {
       session: session

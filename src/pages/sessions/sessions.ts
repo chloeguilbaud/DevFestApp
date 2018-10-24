@@ -14,11 +14,17 @@ export class SessionsPage {
 
   constructor(public navCtrl: NavController, public sessionsHandler: SessionsHandler) {
     this.sessions = [];
+    // Request all sessions
     sessionsHandler.query().then((response: Session[]) => {
       this.sessions = response;
     });
   }
 
+  /**
+   * Open Session page with given Session
+   * 
+   * @param session Session
+   */
   openItem(session: Session) {
     this.navCtrl.push('SessionPage', {
       session: session
