@@ -14,7 +14,10 @@ export class NotesPage {
 
   public imageSrc: string;
 
-  constructor(public camera: Camera, private imgPicker: ImagePicker, private file: File, private alertHandler: ErrorAlertHandler) {
+  constructor(public camera: Camera,
+              private imgPicker: ImagePicker,
+              private file: File,
+              private alertHandler: ErrorAlertHandler) {
 
   }
 
@@ -60,42 +63,13 @@ export class NotesPage {
       this.alertHandler.presentAlert("Oups...", "Sélection de photo annulée... retente plus tard?", "Ok :'(");
     });
 
-    /*const options : CameraOptions = {
-      quality: 100,
-      destinationType: this.camera.DestinationType.FILE_URI,
-      encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE,
-      allowEdit: true,
-      correctOrientation: true,
-      saveToPhotoAlbum: true,
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
-    };
-
-    this.camera.getPicture(options) .then((imageData) => {
-      // Spliting the file and the path from FILE_URI result
-      console.log("imageData", imageData);
-      let filename = imageData.substring(imageData.lastIndexOf('?')+1)
-        + "."
-        + imageData.substring(imageData.lastIndexOf(".Pic.")+".Pic.".length, imageData.lastIndexOf('?'));
-      console.log("filename", filename);
-      let path =  imageData.substring(0,imageData.lastIndexOf('/')+1);
-      console.log("path", path);
-      // Using the method readDataURL
-      this.file.readAsDataURL(path, filename).then(res => {
-        this.imageSrc = res;
-        console.log(res);
-      } ).catch(reason => {
-        console.error(reason);
-        this.alertHandler.presentAlert("Oups...", "Prise de photo impossible... retente plus tard?", "Ok :'(");
-      });
-    }, (err) => {
-      console.error(err);
-      this.alertHandler.presentAlert("Oups...", "Prise de photo impossible... retente plus tard?", "Ok :'(");
-    });*/
-
   }
 
-    private parseImg(imageData: string) {
+  /**
+   * Parse image to be displayed on page
+   * @param {string} imageData image data
+   */
+  private parseImg(imageData: string) {
     // Spliting the file and the path from FILE_URI result
     console.log("imageData", imageData);
     let filename = imageData.substring(imageData.lastIndexOf('/')+1);
