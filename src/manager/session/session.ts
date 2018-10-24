@@ -4,6 +4,8 @@ import { Session } from '../../entities/session';
 import { Sessions } from '../../providers/sessions/sessions'
 import { Presentateur } from '../../entities/presentateur';
 import { Presentateurs } from '../../providers';
+import { QueryErrorHandler } from '../error.handler/query.error.handler';
+import { ErrorAlertHandler } from '../error.handler/error.alert.handler';
 
 /**
  * Class SessionHandler
@@ -13,7 +15,10 @@ import { Presentateurs } from '../../providers';
 @Injectable()
 export class SessionsHandler {
 
-    constructor(public sessions: Sessions, public presentateurs: Presentateurs) { }
+    constructor(public sessions: Sessions,
+                public presentateurs: Presentateurs,
+                public queryErrorHandler: QueryErrorHandler,
+                public alertHandler: ErrorAlertHandler) {}
 
     /**
      * Query
@@ -36,7 +41,11 @@ export class SessionsHandler {
                     ));
                 }
                 res(session);
+            }, (err) => {
+                this.queryErrorHandler.handle(err);
             });
+        }).catch((err) => {
+            this.alertHandler.presentAlert("Aie","Impossible de récupérer la liste des alertes","Ok");
         });
     }
 
@@ -62,9 +71,13 @@ export class SessionsHandler {
                         ));
                     }
                     res(speakersObject);
+                }, (err) => {
+                    this.queryErrorHandler.handle(err);
                 });
             }).then((speakers: Presentateur[]) => {
                 session.presentateurs = speakers;
+            }).catch((err) => {
+                this.alertHandler.presentAlert("Aie","Impossible de récupérer l'alerte","Ok");
             });
         };
         
@@ -86,7 +99,11 @@ export class SessionsHandler {
                         break;
                     }
                 }
+            }, (err) => {
+                this.queryErrorHandler.handle(err);
             });
+        }).catch((err) => {
+            this.alertHandler.presentAlert("Aie","Impossible de récupérer la liste d'alerte","Ok");
         });
     }
 

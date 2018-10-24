@@ -4,6 +4,8 @@ import { Presentateur } from '../../entities/presentateur';
 import { Presentateurs } from '../../providers';
 import { Session } from '../../entities/session';
 import { Sessions } from '../../providers/sessions/sessions'
+import { QueryErrorHandler } from '../error.handler/query.error.handler';
+import { ErrorAlertHandler } from '../error.handler/error.alert.handler';
 
 /**
  * Class PresentateursHandler
@@ -13,7 +15,10 @@ import { Sessions } from '../../providers/sessions/sessions'
 @Injectable()
 export class PresentateursHandler {
 
-    constructor(public presentateurs: Presentateurs, public sessions: Sessions) { }
+    constructor(public presentateurs: Presentateurs,
+                public sessions: Sessions,
+                public queryErrorHandler: QueryErrorHandler,
+                public alertHandler: ErrorAlertHandler) {}
 
     /**
      * Query
@@ -34,7 +39,11 @@ export class PresentateursHandler {
                     ));
                 }
                 res(presentateurs);
+            }, (err) => {
+                this.queryErrorHandler.handle(err);
             });
+        }).catch((err) => {
+            this.alertHandler.presentAlert("Aie", "Impossible de récupérer la liste des présentateurs", "Ok");
         });
     }
 
@@ -66,9 +75,13 @@ export class PresentateursHandler {
                         }
                     }
                     res(sessionsObject);
+                }, (err) => {
+                    this.queryErrorHandler.handle(err);
                 });
             }).then((sessions: Session[]) => {
                 presentateur.sessions = sessions;
+            }).catch((err) => {
+                this.alertHandler.presentAlert("Aie", "Impossible de récupérer les informations du présentateur", "Ok");
             });
         };
         
@@ -90,6 +103,8 @@ export class PresentateursHandler {
                     }
                 }
             });
+        }).catch((err) => {
+            this.alertHandler.presentAlert("Aie", "Impossible de récupérer les informations des présentateurs", "Ok");
         });
     }
 
