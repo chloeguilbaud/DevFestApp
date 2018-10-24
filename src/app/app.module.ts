@@ -11,6 +11,7 @@ import { Device } from '@ionic-native/device';
 import { Network } from '@ionic-native/network';
 import { Camera } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
+import { ImagePicker } from "@ionic-native/image-picker";
 
 import { MyApp } from './app.component';
 import { Api, Sessions, Presentateurs } from '../providers/index';
@@ -80,6 +81,7 @@ export function createTranslateLoader(http: HttpClient) {
     Network,
     Camera,
     File,
+    ImagePicker,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
