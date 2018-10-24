@@ -13,48 +13,19 @@ export class DbManager {
   constructor(private storage: Storage) {  }
 
   saveSessionImage(sessionId: Number, imgData: string) {
-   // return new Promise((resolve, reject) => {
       return this.storage.set(DbManager.storagePreSessionImg + sessionId, imgData);
-     /*   .then(res => {
-          resolve(res);
-        }).catch(err => {
-        reject(err);
-      });
-    });*/
   }
 
   getSessionImage(sessionId: Number) {
-    //return new Promise((resolve, reject) => {
       return this.storage.get(DbManager.storagePreSessionImg + sessionId);
-       /* .then(res => {
-          resolve(res);
-        }).catch(err => {
-        reject(err);
-      });
-    });*/
   }
 
   saveSessionNote(sessionId: Number, imgData: string) {
     return this.storage.set(DbManager.storagePreSessionNote + sessionId, imgData);
-    /*return new Promise((resolve, reject) => {
-      this.storage.set(DbManager.storagePreSessionNote + sessionId, imgData)
-        .then(res => {
-          resolve(res);
-        }).catch(err => {
-        reject(err);
-      });
-    });*/
   }
 
   getSessionNote(sessionId: Number) {
-    //return new Promise((resolve, reject) => {
       return this.storage.get(DbManager.storagePreSessionNote + sessionId)
-      /*  .then(res => {
-          resolve(res);
-        }).catch(err => {
-          reject(err);
-      });
-    });*/
   }
 
 }
