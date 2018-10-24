@@ -10,7 +10,7 @@
 <ion-content>
   <div class="session-page" padding>
     <h2>{{ session.name }}</h2>
-    <img src="https://devfest.gdgnantes.com{{ session.img }}">
+    <img *ngIf="session.img" src="https://devfest.gdgnantes.com{{ session.img }}">
     <h2>Description</h2>
     <p>{{ session.description }}</p>
     <h3>{{ session.type }}</h3>
