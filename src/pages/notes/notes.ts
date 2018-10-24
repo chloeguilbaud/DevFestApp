@@ -26,13 +26,27 @@ export class NotesPage {
 
     this.s = new Session(450, "", "");
 
-    // Loading the notes of the current session (if there are some)
-    dbManager.getSessionNote(this.s.id).then((res) => {
+    this.loadNotes();
+    this.loadImage();
+
+  }
+
+  /**
+   * Loading the notes of the current session (if there are some)
+   */
+  public loadNotes() {
+    this.dbManager.getSessionNote(this.s.id).then((res) => {
         this.note_txt = res;
       }
     ).catch((err) => {
       this.noteEditErrorHandler(err);
     });
+  }
+
+  /**
+   * Loading the image of the current session (if there is one)
+   */
+  public loadImage() {
 
   }
 
@@ -117,4 +131,5 @@ export class NotesPage {
     console.error(err);
     this.alertHandler.presentAlert("Humm...", "Tu n'as pas encore de note... ou alors tes notes ont été supprimées...", "Je te pardonne");
   }
+
 }
