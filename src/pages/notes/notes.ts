@@ -109,6 +109,10 @@ export class NotesPage {
     } );
   }
 
+  /**
+   * Note error handler
+   * @param err error
+   */
   private noteEditErrorHandler(err: any) {
     console.error(err);
     this.alertHandler.presentAlert("Humm...", "Tu n'as pas encore de note... ou alors tes notes ont été supprimées...", "Je te pardonne");
