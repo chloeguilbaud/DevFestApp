@@ -20,5 +20,7 @@
         </button>
       </ion-item-sliding>
     </ion-list>
+    <ion-label>Add to contact</ion-label>
+    <ion-toggle [(ngModel)]="isAddContactToggled" (ionChange)="onAddToContactToggleChange()"></ion-toggle>
   </div>
 </ion-content>
