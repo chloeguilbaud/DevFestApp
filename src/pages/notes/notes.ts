@@ -26,24 +26,13 @@ export class NotesPage {
 
     this.s = new Session(450, "", "");
 
-    // Getting the notes of the current session
+    // Loading the notes of the current session (if there are some)
     dbManager.getSessionNote(this.s.id).then((res) => {
         this.note_txt = res;
       }
     ).catch((err) => {
-      console.error(err);
-      alertHandler.presentAlert("Humm...", "Tu n'as pas encore de note... ou alors tes notes ont été supprimées...", "Je te pardonne");
+      this.noteEditErrorHandler(err);
     });
-
-    this.dbManager.saveSessionNote(45, "coucuo78dzd9");
-    /*let s: Session = new Session(45, "", "");
-    dbManager.getSessionNote(s.id).then(res => {
-      //this.noteTxt = res;
-      console.log(res);
-    }).catch(err => {
-      console.error(err);
-      alertHandler.presentAlert("Humm...", "Tu n'as pas encore de note... ou alors tes notes ont été supprimées...", "Je te pardonne");
-    });*/
 
   }
 
@@ -51,7 +40,11 @@ export class NotesPage {
    * Save notes in the database
    */
   saveNotes() {
-    this.dbManager.saveSessionNote(this.s.id, this.note_txt);
+    this.dbManager.saveSessionNote(this.s.id, this.note_txt)
+      .catch((err) => {
+        this.noteEditErrorHandler(err);
+      }
+    );
   }
 
 
@@ -114,5 +107,10 @@ export class NotesPage {
     this.file.readAsDataURL(path, filename).then(res => {
       this.image_src = res;
     } );
+  }
+
+  private noteEditErrorHandler(err: any) {
+    console.error(err);
+    this.alertHandler.presentAlert("Humm...", "Tu n'as pas encore de note... ou alors tes notes ont été supprimées...", "Je te pardonne");
   }
 }
