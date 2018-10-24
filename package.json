@@ -65,8 +65,7 @@
       "cordova-plugin-file": {},
       "cordova-plugin-telerik-imagepicker": {
         "PHOTO_LIBRARY_USAGE_DESCRIPTION": "Choose!"
-      },
-      "cordova-sqlite-storage": {}
+      }
     },
     "platforms": [
       "android"
