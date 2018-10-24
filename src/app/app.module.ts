@@ -12,6 +12,7 @@ import { Network } from '@ionic-native/network';
 import { Camera } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { ImagePicker } from "@ionic-native/image-picker";
+import { SQLite } from "@ionic-native/sqlite";
 
 import { MyApp } from './app.component';
 import { Api, Sessions, Presentateurs } from '../providers/index';
@@ -82,6 +83,7 @@ export function createTranslateLoader(http: HttpClient) {
     Camera,
     File,
     ImagePicker,
+    SQLite,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

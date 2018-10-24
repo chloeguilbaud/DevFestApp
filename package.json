@@ -27,6 +27,7 @@
     "@ionic-native/image-picker": "^4.16.0",
     "@ionic-native/network": "^4.16.0",
     "@ionic-native/splash-screen": "~4.15.0",
+    "@ionic-native/sqlite": "^4.16.0",
     "@ionic-native/status-bar": "~4.15.0",
     "@ionic/storage": "2.2.0",
     "@ngx-translate/core": "^10.0.2",
@@ -64,7 +65,8 @@
       "cordova-plugin-file": {},
       "cordova-plugin-telerik-imagepicker": {
         "PHOTO_LIBRARY_USAGE_DESCRIPTION": "Choose!"
-      }
+      },
+      "cordova-sqlite-storage": {}
     },
     "platforms": [
       "android"
