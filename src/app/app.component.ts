@@ -10,6 +10,7 @@ import { SessionsPage } from '../pages/sessions/sessions';
 import { PresentateursPage } from '../pages/presentateurs/presentateurs';
 import { TelephonePage } from '../pages/telephone/telephone';
 import { AgendaPage } from '../pages/agenda/agenda';
+import { NotesPage } from "../pages/notes/notes";
 
 @Component({
   templateUrl: 'app.html'
@@ -18,7 +19,7 @@ export class MyApp {
 
   @ViewChild(Nav) nav: Nav;
 
-  rootPage:any = AccueilPage;
+  rootPage:any = NotesPage;
 
   pages: Array<{ title: string, component: any}>;
 

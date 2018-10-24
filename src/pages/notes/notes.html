@@ -14,8 +14,9 @@
 
   <h1>Titre de session</h1>
 
-  <button ion-button block outline style="text-transform: none;">Enregistrer</button>
-  <ion-textarea id="notes_field" placeholder="Mes tites notes..." autocomplete="on" clearInput="on"></ion-textarea>
+  <button ion-button block outline style="text-transform: none;" (click)="saveNotes()">Enregistrer</button>
+  <ion-textarea id="notes_field" placeholder="Mes tites notes..." autocomplete="on" clearInput="on"
+    [(ngModel)]="note_txt"></ion-textarea>
 
   <ion-grid>
     <ion-row justify-content-center>
@@ -34,6 +35,6 @@
     </ion-row>
   </ion-grid>
 
-  <img [src]="imageSrc" height="200px">
+  <img [src]="image_src" height="200px">
 
 </ion-content>

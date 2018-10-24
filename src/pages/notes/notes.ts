@@ -5,6 +5,8 @@ import { File } from '@ionic-native/file';
 import { ImagePicker, ImagePickerOptions } from "@ionic-native/image-picker";
 
 import { ErrorAlertHandler } from "../../manager/error.handler/error.alert.handler";
+import {Session} from "../../entities/session";
+import {DbManager} from "../../database/db.manager";
 
 @Component({
   selector: 'page-notes',
@@ -12,14 +14,46 @@ import { ErrorAlertHandler } from "../../manager/error.handler/error.alert.handl
 })
 export class NotesPage {
 
-  public imageSrc: string;
+  public image_src: string;
+  public note_txt: string;
+  public s: Session;
 
   constructor(public camera: Camera,
               private imgPicker: ImagePicker,
               private file: File,
-              private alertHandler: ErrorAlertHandler) {
+              private alertHandler: ErrorAlertHandler,
+              private dbManager: DbManager) {
+
+    this.s = new Session(450, "", "");
+
+    // Getting the notes of the current session
+    dbManager.getSessionNote(this.s.id).then((res) => {
+        this.note_txt = res;
+      }
+    ).catch((err) => {
+      console.error(err);
+      alertHandler.presentAlert("Humm...", "Tu n'as pas encore de note... ou alors tes notes ont été supprimées...", "Je te pardonne");
+    });
+
+    this.dbManager.saveSessionNote(45, "coucuo78dzd9");
+    /*let s: Session = new Session(45, "", "");
+    dbManager.getSessionNote(s.id).then(res => {
+      //this.noteTxt = res;
+      console.log(res);
+    }).catch(err => {
+      console.error(err);
+      alertHandler.presentAlert("Humm...", "Tu n'as pas encore de note... ou alors tes notes ont été supprimées...", "Je te pardonne");
+    });*/
 
   }
+
+  /**
+   * Save notes in the database
+   */
+  saveNotes() {
+    this.dbManager.saveSessionNote(this.s.id, this.note_txt);
+  }
+
 
   /**
    * Enables photo taking by camera and showing it on page
@@ -78,7 +112,7 @@ export class NotesPage {
     console.log("path", path);
     // Using the method readDataURL
     this.file.readAsDataURL(path, filename).then(res => {
-      this.imageSrc = res;
+      this.image_src = res;
     } );
   }
 }
