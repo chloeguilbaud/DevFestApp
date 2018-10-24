@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 
+import {ErrorAlertHandler} from "../../manager/error.handler/error.alert.handler";
+
 @Component({
   selector: 'page-notes',
   templateUrl: 'notes.html'
@@ -11,7 +13,7 @@ export class NotesPage {
 
   public imageSrc: string;
 
-  constructor(public camera: Camera, private file: File) {
+  constructor(public camera: Camera, private file: File, private alertHandler: ErrorAlertHandler) {
 
   }
 
@@ -66,16 +68,16 @@ export class NotesPage {
       saveToPhotoAlbum: true
     };
     this.camera.getPicture(options) .then((imageData) => {
-      //needs to import file plugin
-      //split the file and the path from FILE_URI result
+      // Spliting the file and the path from FILE_URI result
       let filename = imageData.substring(imageData.lastIndexOf('/')+1);
       let path =  imageData.substring(0,imageData.lastIndexOf('/')+1);
-      //then use the method reasDataURL  btw. var_picture is ur image variable
+      // Using the method readDataURL 
       this.file.readAsDataURL(path, filename).then(res=> {
         this.imageSrc = res;
       } );
     }, (err) => {
-        
+      console.error(err);
+      this.alertHandler.presentAlert("Oups...", "Prise de photo impossible... retente plus tard?", "Ok :'(");
     });
 
   }
