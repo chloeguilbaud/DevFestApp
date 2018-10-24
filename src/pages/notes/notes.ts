@@ -17,6 +17,9 @@ export class NotesPage {
 
   }
 
+  /**
+   * Enables photo taking by camera and showing it on page
+   */
   takePhotoFromCamera() {
 
     const options : CameraOptions = {
