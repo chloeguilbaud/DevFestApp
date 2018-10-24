@@ -6,7 +6,8 @@ import { Injectable } from '@angular/core';
  */
 export class DbConf {
 
-  public static databasename: string = "devfest.db";
-  public static location: string = "default";
+  public static dbName: string = "devfest.db";
+  public static dbLocation: string = "default";
+  public static dbCreateFromLocation: number = 1;
 
 }

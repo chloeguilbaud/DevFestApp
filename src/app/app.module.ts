@@ -12,10 +12,9 @@ import { Network } from '@ionic-native/network';
 import { Camera } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { ImagePicker } from "@ionic-native/image-picker";
-import { SQLite } from "@ionic-native/sqlite";
 
 import { MyApp } from './app.component';
-import { Api, Sessions, Presentateurs } from '../providers/index';
+import { Api, Sessions, Presentateurs } from '../providers';
 import { AgendaPage } from "../pages/agenda/agenda";
 import { AccueilPage } from "../pages/accueil/accueil";
 import { PresentateursPage } from "../pages/presentateurs/presentateurs";
@@ -23,13 +22,16 @@ import { SessionsPage } from "../pages/sessions/sessions";
 import { TelephonePage } from "../pages/telephone/telephone";
 import { NotesPage } from "../pages/notes/notes";
 
-import { Schedule } from "../providers/schedule/schedule";
+import { Schedule } from "../providers";
 import { QueryErrorHandler } from "../manager/error.handler/query.error.handler";
 import { SessionsHandler } from '../manager/session/session';
 import { PresentateursHandler } from '../manager/presentateur/presentateur'
 import { ScheduleManager } from "../manager/schedule/schedule.manager";
 import { ErrorAlertHandler } from "../manager/error.handler/error.alert.handler";
-import {DbConf} from "../app/db.conf";
+
+import { IonicStorageModule } from '@ionic/storage';
+import { DbConf } from "./db.conf";
+import { DbManager } from "../database/db.manager";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -47,8 +49,9 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
+    HttpClientModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -76,6 +79,7 @@ export function createTranslateLoader(http: HttpClient) {
     QueryErrorHandler,
     ErrorAlertHandler,
     DbConf,
+    DbManager,
     StatusBar,
     SplashScreen,
     SessionsHandler,
@@ -85,7 +89,7 @@ export function createTranslateLoader(http: HttpClient) {
     Camera,
     File,
     ImagePicker,
-    SQLite,
+    //SQLite,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

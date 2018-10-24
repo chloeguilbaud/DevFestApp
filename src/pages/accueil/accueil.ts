@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
-import { AlertController } from 'ionic-angular';
-
 import { ScheduleManager } from '../../manager/schedule/schedule.manager';
 
 @Component({
@@ -15,7 +12,7 @@ export class AccueilPage {
   public datefin: String;
   public hidedate: boolean;
 
-  constructor(public navCtrl: NavController, public scheduleM: ScheduleManager) {
+  constructor(public scheduleM: ScheduleManager) {
 
     this.hidedate = false;
     // Getting the devfest dates
