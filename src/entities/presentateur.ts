@@ -1,5 +1,9 @@
 import { Session } from "./session";
 
+/**
+ * Class Presentateur
+ * Handle all speaker's features
+ */
 export class Presentateur {
 
     id: Number;

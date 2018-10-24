@@ -14,11 +14,17 @@ export class PresentateursPage {
 
   constructor(public navCtrl: NavController, public presentatateurHandler: PresentateursHandler) {
     this.presentateurs = [];
+    // Request all presentateurs
     presentatateurHandler.query().then((response: Presentateur[]) => {
       this.presentateurs = response;
     });
   }
 
+  /**
+   * Open Presentateur page with given Presentateur
+   * 
+   * @param presentateur Presentateur
+   */
   openItem(presentateur: Presentateur) {
     this.navCtrl.push('PresentateurPage', {
       presentateur: presentateur

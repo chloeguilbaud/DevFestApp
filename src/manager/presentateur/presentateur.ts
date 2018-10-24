@@ -5,11 +5,22 @@ import { Presentateurs } from '../../providers';
 import { Session } from '../../entities/session';
 import { Sessions } from '../../providers/sessions/sessions'
 
+/**
+ * Class PresentateursHandler
+ * 
+ * Handle all call to get or put Presentateur's objects
+ */
 @Injectable()
 export class PresentateursHandler {
 
     constructor(public presentateurs: Presentateurs, public sessions: Sessions) { }
 
+    /**
+     * Query
+     * 
+     * Request all presentateurs
+     * @param params 
+     */
     query(params?: any) {
         return new Promise((res, rej) => {
             this.presentateurs.query(params).subscribe((response : any) => {
@@ -27,7 +38,14 @@ export class PresentateursHandler {
         });
     }
 
+    /**
+     * getPresentateur
+     * 
+     * Request a single presentateur with depth 2
+     * @param id    PresentateurId
+     */
     getPresentateur(id: Number) {
+        // Function to get session for presentateur
         const getSessions = (presentateur: Presentateur) => {
             return new Promise((res, rej) => {
                 this.sessions.query().subscribe((response: any) => {
@@ -54,6 +72,7 @@ export class PresentateursHandler {
             });
         };
         
+        // Get all presentateur objects and pick the one needed
         return new Promise((res, rej) => {
             this.presentateurs.query().subscribe((response : any) => {
                 for (let key in response) {
@@ -74,10 +93,22 @@ export class PresentateursHandler {
         });
     }
 
+    /**
+     * add
+     * 
+     * Add presentateur to API
+     * @param presentateur Presentateur
+     */
     add(presentateur: Presentateur) {
         this.presentateurs.add(presentateur);
     }
 
+    /**
+     * delete
+     * 
+     * Delete presentateur from API
+     * @param presentateur Presentateur
+     */
     delete(presentateur: Presentateur) {
         this.presentateurs.delete(presentateur);
     }
