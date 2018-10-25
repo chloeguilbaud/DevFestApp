@@ -129,11 +129,8 @@ export class NotesPage {
    */
   private displayImg(imageData: string) {
     // Spliting the file and the path from FILE_URI result
-    console.log("imageData", imageData);
     let filename = imageData.substring(imageData.lastIndexOf('/')+1);
-    console.log("filename", filename);
     let path =  imageData.substring(0,imageData.lastIndexOf('/')+1);
-    console.log("path", path);
     // Using the method readDataURL
     this.file.readAsDataURL(path, filename).then(res => {
       this.image_src = res;
