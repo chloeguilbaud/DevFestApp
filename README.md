@@ -19,6 +19,9 @@ Gestion des erreurs
 Balise HTML
 PAs de photo sur note page en browser
 
+## Handle errors
+Connexion, picture taking, database acces,... many errors can happen and they have to be indicated to the user. A specific manager has been dedicated to that task. 
+
 ## Documentation a rédiger
 - Error handler
 - choix de conception avec manager
@@ -27,3 +30,4 @@ PAs de photo sur note page en browser
   base de donner dans module extérieuc 
   utilisation de sqllite mais retour en arrière car pb tehcnique
   facile de msj ou changer la technologie
+- manifest json
