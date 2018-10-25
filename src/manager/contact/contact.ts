@@ -39,13 +39,21 @@ export class ContactsHandler {
     remove(presentateur: Presentateur) {
         // TODO
         const options = new ContactFindOptions();
-        options.filter = 'test@test.test';
+        options.filter = presentateur.nom;
         options.multiple = false;
 
         return new Promise((res, err) => {
-            this.contacts.find(['emails'], options).then((contacts: Contact[]) => {
+            this.contacts.find(['name'], options).then((contacts: Contact[]) => {
                 console.log(contacts);
-                res();
+                if (contacts.length === 1) {
+                    contacts[0].remove().then(() => {
+                        res();
+                    }).catch(() => {
+                        err();
+                    });
+                } else {
+                    err();
+                }
             }).catch((e) => {
                 err();
             });
@@ -58,16 +66,15 @@ export class ContactsHandler {
      * @param presentateur Presentateur
      */
     exists(presentateur: Presentateur) {
-        // TODO
         const options = new ContactFindOptions();
-        options.filter = 'test@test.test';
+        options.filter = presentateur.nom;
         options.multiple = false;
 
         return new Promise((res, err) => {
-            this.contacts.find(['emails'], options).then((contacts: Contact[]) => {
+            this.contacts.find(['name'], options).then((contacts: Contact[]) => {
                 res(contacts.length > 0);
             }).catch((e) => {
-                res(false); // TODO: res ou err ?
+                res(false);
             });
         });
     }
