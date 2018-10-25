@@ -20,7 +20,7 @@ Balise HTML
 PAs de photo sur note page en browser
 
 ## Handle errors
-Connexion, picture taking, database acces,... many errors can happen and they have to be indicated to the user. A specific manager has been dedicated to that task. 
+Connexion, picture taking, database acces,... many errors can happen and they have to be indicated to the user. A specific manager has been dedicated to that task and iq located in the `error.handler` package. The error manager 
 
 ## Documentation a rédiger
 - Error handler

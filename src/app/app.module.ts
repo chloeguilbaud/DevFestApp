@@ -15,11 +15,11 @@ import { ImagePicker } from "@ionic-native/image-picker";
 
 import { MyApp } from './app.component';
 import { Api, Sessions, Presentateurs } from '../providers';
-import { AgendaPage } from "../pages/agenda/agenda";
 import { AccueilPage } from "../pages/accueil/accueil";
 import { PresentateursPage } from "../pages/presentateurs/presentateurs";
 import { SessionsPage } from "../pages/sessions/sessions";
 import { TelephonePage } from "../pages/telephone/telephone";
+import { RefreshPage } from "../pages/refresh/refresh";
 
 import { Schedule } from "../providers";
 import { QueryErrorHandler } from "../manager/error.handler/query.error.handler";
@@ -41,11 +41,11 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     MyApp,
-    AgendaPage,
     AccueilPage,
     PresentateursPage,
     SessionsPage,
-    TelephonePage
+    TelephonePage,
+    RefreshPage
   ],
   imports: [
     BrowserModule,
@@ -63,11 +63,11 @@ export function createTranslateLoader(http: HttpClient) {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AgendaPage,
     AccueilPage,
     PresentateursPage,
     SessionsPage,
-    TelephonePage
+    TelephonePage,
+    RefreshPage
   ],
   providers: [
     Api,

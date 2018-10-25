@@ -9,7 +9,7 @@ import { AccueilPage } from '../pages/accueil/accueil';
 import { SessionsPage } from '../pages/sessions/sessions';
 import { PresentateursPage } from '../pages/presentateurs/presentateurs';
 import { TelephonePage } from '../pages/telephone/telephone';
-import { AgendaPage } from '../pages/agenda/agenda';
+import { RefreshPage } from '../pages/refresh/refresh';
 
 @Component({
   templateUrl: 'app.html'
@@ -42,7 +42,7 @@ export class MyApp {
       { title: 'Sessions', component: SessionsPage },
       { title: 'Présentateurs', component: PresentateursPage },
       { title: 'Téléphone', component: TelephonePage },
-      { title: 'Agenda', component: AgendaPage }
+      { title: 'Refresh', component: RefreshPage }
     ];
 
   }
