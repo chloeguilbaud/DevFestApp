@@ -89,5 +89,9 @@
         <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value="Choose!" />
     </plugin>
     <plugin name="cordova-plugin-contacts" spec="3.0.1" />
+<<<<<<< HEAD
     <engine name="android" spec="7.1.1" />
+=======
+    <engine name="android" spec="~7.1.1" />
+>>>>>>> b0410fb4fa87e2c25797a4b9c94ea486d6f94d93
 </widget>

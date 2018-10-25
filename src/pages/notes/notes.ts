@@ -5,8 +5,8 @@ import { File } from '@ionic-native/file';
 import { ImagePicker, ImagePickerOptions } from "@ionic-native/image-picker";
 
 import { ErrorAlertHandler } from "../../manager/error.handler/error.alert.handler";
-import {Session} from "../../entities/session";
-import {DbManager} from "../../database/db.manager";
+import { Session } from "../../entities/session";
+import { DbManager } from "../../database/db.manager";
 
 @Component({
   selector: 'page-notes',
@@ -27,7 +27,7 @@ export class NotesPage {
     this.s = new Session(450, "", "");
 
     this.loadNotes();
-    this.loadImage();
+    //this.loadImage();
 
   }
 
@@ -47,14 +47,20 @@ export class NotesPage {
    * Loading the image of the current session (if there is one)
    */
   public loadImage() {
+    this.dbManager.getSessionImage(this.s.id).then((res) => {
 
+    }).catch((err) => {
+      this.imageEditErrorHandler(err);
+    });
   }
 
   /**
    * Save notes in the database
    */
   saveNotes() {
-    this.dbManager.saveSessionNote(this.s.id, this.note_txt)
+    this.dbManager.saveSessionNote(this.s.id, this.note_txt).then(() => {
+      this.alertHandler.presentAlert("Uiii!", "Vos notes ont été enregistrée avec succès!", "Ok");
+    })
       .catch((err) => {
         this.noteEditErrorHandler(err);
       }
@@ -124,12 +130,21 @@ export class NotesPage {
   }
 
   /**
-   * Note error handler
+   * Note saving or loading error handler
    * @param err error
    */
   private noteEditErrorHandler(err: any) {
     console.error(err);
     this.alertHandler.presentAlert("Humm...", "Tu n'as pas encore de note... ou alors tes notes ont été supprimées...", "Je te pardonne");
+  }
+
+  /**
+   * Image saving or loading error handler
+   * @param err error
+   */
+  private imageEditErrorHandler(err: any) {
+    console.error(err);
+    this.alertHandler.presentAlert("Oups...", "Tu n'as pas encore de photo... ou alors ta photo à été supprimées...", "Je te pardonne");
   }
 
 }
