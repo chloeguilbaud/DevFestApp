@@ -6,7 +6,7 @@ import { ImagePicker, ImagePickerOptions } from "@ionic-native/image-picker";
 
 import { ErrorAlertHandler } from "../../manager/error.handler/error.alert.handler";
 import { Session } from "../../entities/session";
-import { DbManager } from "../../database/db.manager";
+import { DbManager } from "../../manager/database/db.manager";
 
 @Component({
   selector: 'page-notes',
@@ -47,8 +47,8 @@ export class NotesPage {
    * Loading the image of the current session (if there is one)
    */
   public loadImage() {
-    this.dbManager.getSessionImage(this.s.id).then((res) => {
-
+    this.dbManager.getSessionImage(this.s.id).then((imageData) => {
+      this.displayImg(imageData);
     }).catch((err) => {
       this.imageEditErrorHandler(err);
     });
@@ -85,7 +85,7 @@ export class NotesPage {
     };
 
     this.camera.getPicture(options).then((imageData) => {
-      this.parseImg(imageData);
+      this.displayAndSaveImg(imageData);
     }, (err) => {
       console.error(err);
       this.alertHandler.presentAlert("Oups...", "Prise de photo annulée... retente plus tard?", "Ok :'(");
@@ -104,7 +104,7 @@ export class NotesPage {
 
     this.imgPicker.getPictures(options).then((results) => {
       console.log("res", results);
-      this.parseImg(results[0]);
+      this.displayAndSaveImg(results[0]);
     }, (err) => {
       console.error(err);
       this.alertHandler.presentAlert("Oups...", "Sélection de photo annulée... retente plus tard?", "Ok :'(");
@@ -113,10 +113,21 @@ export class NotesPage {
   }
 
   /**
-   * Parse image to be displayed on page
+   * Display and saves image to be displayed on page
    * @param {string} imageData image data
    */
-  private parseImg(imageData: string) {
+  private displayAndSaveImg(imageData: string) {
+    // Saving image in data base
+    this.dbManager.saveSessionImage(this.s.id, imageData);
+    // Parse image
+    this.displayImg(imageData);
+  }
+
+  /**
+   * Display image to be displayed on page
+   * @param {string} imageData image data
+   */
+  private displayImg(imageData: string) {
     // Spliting the file and the path from FILE_URI result
     console.log("imageData", imageData);
     let filename = imageData.substring(imageData.lastIndexOf('/')+1);

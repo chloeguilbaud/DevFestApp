@@ -32,7 +32,7 @@ import { ContactsHandler } from "../manager/contact/contact";
 
 import { IonicStorageModule } from '@ionic/storage';
 import { DbConf } from "./db.conf";
-import { DbManager } from "../database/db.manager";
+import { DbManager } from "../manager/database/db.manager";
 import { Contact, Contacts } from '@ionic-native/contacts';
 
 export function createTranslateLoader(http: HttpClient) {
