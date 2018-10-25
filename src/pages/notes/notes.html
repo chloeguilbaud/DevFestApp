@@ -35,6 +35,6 @@
     </ion-row>
   </ion-grid>
 
-  <img [src]="image_src" height="200px">
+  <img *ngIf="image_src" [src]="image_src" height="200px">
 
 </ion-content>

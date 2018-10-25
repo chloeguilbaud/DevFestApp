@@ -31,8 +31,8 @@ import { ContactsHandler } from "../manager/contact/contact";
 
 import { IonicStorageModule } from '@ionic/storage';
 import { DbConf } from "./db.conf";
-import { DbManager } from "../database/db.manager";
 import { Contacts } from '@ionic-native/contacts';
+import { DbManager } from "../manager/database/db.manager";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
