@@ -20,7 +20,6 @@ import { AccueilPage } from "../pages/accueil/accueil";
 import { PresentateursPage } from "../pages/presentateurs/presentateurs";
 import { SessionsPage } from "../pages/sessions/sessions";
 import { TelephonePage } from "../pages/telephone/telephone";
-import { NotesPage } from "../pages/notes/notes";
 
 import { Schedule } from "../providers";
 import { QueryErrorHandler } from "../manager/error.handler/query.error.handler";
@@ -32,8 +31,8 @@ import { ContactsHandler } from "../manager/contact/contact";
 
 import { IonicStorageModule } from '@ionic/storage';
 import { DbConf } from "./db.conf";
+import { Contacts } from '@ionic-native/contacts';
 import { DbManager } from "../manager/database/db.manager";
-import { Contact, Contacts } from '@ionic-native/contacts';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -46,8 +45,7 @@ export function createTranslateLoader(http: HttpClient) {
     AccueilPage,
     PresentateursPage,
     SessionsPage,
-    TelephonePage,
-    NotesPage
+    TelephonePage
   ],
   imports: [
     BrowserModule,
@@ -69,8 +67,7 @@ export function createTranslateLoader(http: HttpClient) {
     AccueilPage,
     PresentateursPage,
     SessionsPage,
-    TelephonePage,
-    NotesPage
+    TelephonePage
   ],
   providers: [
     Api,

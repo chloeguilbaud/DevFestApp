@@ -6,8 +6,10 @@ import { ImagePicker, ImagePickerOptions } from "@ionic-native/image-picker";
 
 import { ErrorAlertHandler } from "../../manager/error.handler/error.alert.handler";
 import { Session } from "../../entities/session";
+import { IonicPage, NavParams } from 'ionic-angular';
 import { DbManager } from "../../manager/database/db.manager";
 
+@IonicPage()
 @Component({
   selector: 'page-notes',
   templateUrl: 'notes.html'
@@ -18,13 +20,14 @@ export class NotesPage {
   public note_txt: string;
   public s: Session;
 
-  constructor(public camera: Camera,
+  constructor(navParams: NavParams,
+              public camera: Camera,
               private imgPicker: ImagePicker,
               private file: File,
               private alertHandler: ErrorAlertHandler,
               private dbManager: DbManager) {
 
-    this.s = new Session(450, "", "");
+    this.s = navParams.get('session');
 
     this.loadNotes();
     //this.loadImage();
