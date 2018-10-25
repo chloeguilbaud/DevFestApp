@@ -56,23 +56,26 @@ export class PresentateurPage {
    * Triggered when toogle is enabled/disabled
    */
   onAddToContactToggleChange() {
+    console.log(this.isAddContactToggled);
     // If the button is enable
     if (this.isAddContactToggled) {
       // Delete the contact
-      this.contactHandler.remove(this.presentateur).then(() => {
+      this.contactHandler.add(this.presentateur).then(() => {
         // Disable button when done
-        this.isAddContactToggled = false;
+        // this.isAddContactToggled = false;
       }).catch((err) => {
-        this.alertHandler.presentAlert('Aie', "Impossible de retirer le présentateur des contacts", 'ok');
+        this.isAddContactToggled = true;
+        this.alertHandler.presentAlert('Aie', "Impossible d'ajouter le présentateur aux contacts", 'ok');
       });
     // If the button is disable
     } else {
       // Add the contact
-      this.contactHandler.add(this.presentateur).then(() => {
+      this.contactHandler.remove(this.presentateur).then(() => {
         // Disable button when done
-        this.isAddContactToggled = true;
+        // this.isAddContactToggled = true;
       }).catch((err) => {
-        this.alertHandler.presentAlert('Aie', "Impossible d'ajouter le présentateur aux contacts", 'ok');
+        this.isAddContactToggled = false;
+        this.alertHandler.presentAlert('Aie', "Impossible de retirer le présentateur des contacts", 'ok');
       });
     }
   }
