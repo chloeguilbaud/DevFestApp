@@ -6,7 +6,7 @@
 
 'use strict';
 importScripts('./build/sw-toolbox.js');
-
+console.log('fffff')
 self.toolbox.options.cache = {
   name: 'ionic-cache'
 };
@@ -121,3 +121,4 @@ self.addEventListener("fetch", function(event) {
     })
   );
 });
+self.skipWaiting();
