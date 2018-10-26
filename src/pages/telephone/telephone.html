@@ -12,34 +12,53 @@
 
 <ion-content padding>
 
-  <h1>Telephone</h1>
+  <ion-list>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col col-4>Platform</ion-col>
-      <ion-col col-8 *ngIf="device_platform">{{device_platform}}</ion-col>
-      <ion-col col-8 *ngIf="!device_platform">{{msg_error}}</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-4>Version</ion-col>
-      <ion-col col-8 *ngIf="os_version">{{os_version}}</ion-col>
-      <ion-col col-8 *ngIf="!os_version">{{msg_error}}</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-4>UUID</ion-col>
-      <ion-col col-8 *ngIf="device_uuid">{{device_uuid}}</ion-col>
-      <ion-col col-8 *ngIf="!device_uuid">{{msg_error}}</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-4>Model</ion-col>
-      <ion-col col-8 *ngIf="device_model">{{device_model}}</ion-col>
-      <ion-col col-8 *ngIf="!device_model">{{msg_error}}</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-4>Connexion</ion-col>
-      <ion-col col-8 *ngIf="device_connection_type">{{device_connection_type}}</ion-col>
-      <ion-col col-8 *ngIf="!device_connection_type">{{msg_error}}</ion-col>
-    </ion-row>
-  </ion-grid>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="../../assets/icon/platform.png">
+      </ion-avatar>
+      <h2>Platform</h2>
+      <p *ngIf="device_platform">{{device_platform}}</p>
+      <p *ngIf="!device_platform">{{msg_error}}</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="../../assets/icon/version.png">
+      </ion-avatar>
+      <h2>Version</h2>
+      <p *ngIf="os_version">{{os_version}}</p>
+      <p *ngIf="!os_version">{{msg_error}}</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="../../assets/icon/UUID.png">
+      </ion-avatar>
+      <h2>UUID</h2>
+      <p *ngIf="device_uuid">{{device_uuid}}</p>
+      <p *ngIf="!device_uuid">{{msg_error}}</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="../../assets/icon/model.png">
+      </ion-avatar>
+      <h2>Model</h2>
+      <p *ngIf="device_model">{{device_model}}</p>
+      <p *ngIf="!device_model">{{msg_error}}</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="../../assets/icon/network.png">
+      </ion-avatar>
+      <h2>Connexion</h2>
+      <p *ngIf="device_connection_type">{{device_connection_type}}</p>
+      <p *ngIf="!device_connection_type">{{msg_error}}</p>
+    </ion-item>
+
+  </ion-list>
 
 </ion-content>
