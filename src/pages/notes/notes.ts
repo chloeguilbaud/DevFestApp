@@ -6,8 +6,10 @@ import { ImagePicker, ImagePickerOptions } from "@ionic-native/image-picker";
 
 import { ErrorAlertHandler } from "../../manager/error.handler/error.alert.handler";
 import { Session } from "../../entities/session";
-import { DbManager } from "../../database/db.manager";
+import { IonicPage, NavParams } from 'ionic-angular';
+import { DbManager } from "../../manager/database/db.manager";
 
+@IonicPage()
 @Component({
   selector: 'page-notes',
   templateUrl: 'notes.html'
@@ -18,15 +20,15 @@ export class NotesPage {
   public note_txt: string;
   public s: Session;
 
-  constructor(public camera: Camera,
+  constructor(navParams: NavParams,
+              public camera: Camera,
               private imgPicker: ImagePicker,
               private file: File,
               private alertHandler: ErrorAlertHandler,
               private dbManager: DbManager) {
 
-    this.s = new Session(450, "", "");
+    this.s = navParams.get('session');
 
-    //this.dbManager.saveSessionImage(450, );
     this.loadNotes();
     this.loadImage();
 
@@ -48,10 +50,10 @@ export class NotesPage {
    * Loading the image of the current session (if there is one)
    */
   public loadImage() {
-    this.dbManager.getSessionImage(this.s.id).then((res) => {
-      this.image_src = res;
+    this.dbManager.getSessionImage(this.s.id).then((imageData) => {
+      this.displayImg(imageData);
     }).catch((err) => {
-      this.handleImageError(err);
+      this.imageEditErrorHandler(err);
     });
   }
 
@@ -59,7 +61,9 @@ export class NotesPage {
    * Save notes in the database
    */
   saveNotes() {
-    this.dbManager.saveSessionNote(this.s.id, this.note_txt)
+    this.dbManager.saveSessionNote(this.s.id, this.note_txt).then(() => {
+      this.alertHandler.presentAlert("Uiii!", "Vos notes ont été enregistrée avec succès!", "Ok");
+    })
       .catch((err) => {
         this.handleNoteError(err);
       }
@@ -84,7 +88,7 @@ export class NotesPage {
     };
 
     this.camera.getPicture(options).then((imageData) => {
-      this.parseAndSaveImg(imageData);
+      this.displayAndSaveImg(imageData);
     }, (err) => {
       console.error(err);
       this.alertHandler.presentAlert("Oups...", "Prise de photo annulée... retente plus tard?", "Ok :'(");
@@ -103,8 +107,7 @@ export class NotesPage {
 
     this.imgPicker.getPictures(options).then((results) => {
       console.log("res", results);
-      this.parseAndSaveImg(results[0]);
-
+      this.displayAndSaveImg(results[0]);
     }, (err) => {
       console.error(err);
       this.alertHandler.presentAlert("Oups...", "Sélection de photo annulée... retente plus tard?", "Ok :'(");
@@ -113,16 +116,24 @@ export class NotesPage {
   }
 
   /**
-   * Parse image to be displayed on page
+   * Display and saves image to be displayed on page
    * @param {string} imageData image data
    */
-  private parseAndSaveImg(imageData: string) {
+  private displayAndSaveImg(imageData: string) {
+    // Saving image in data base
+    this.dbManager.saveSessionImage(this.s.id, imageData);
+    // Parse image
+    this.displayImg(imageData);
+  }
+
+  /**
+   * Display image to be displayed on page
+   * @param {string} imageData image data
+   */
+  private displayImg(imageData: string) {
     // Spliting the file and the path from FILE_URI result
-    console.log("imageData", imageData);
     let filename = imageData.substring(imageData.lastIndexOf('/')+1);
-    console.log("filename", filename);
     let path =  imageData.substring(0,imageData.lastIndexOf('/')+1);
-    console.log("path", path);
     // Transforming and saving image data
     this.file.readAsDataURL(path, filename).then(res => {
       this.image_src = res;
@@ -134,7 +145,7 @@ export class NotesPage {
   }
 
   /**
-   * Note error handler
+   * Note saving or loading error handler
    * @param err error
    */
   private handleNoteError(err: any) {
@@ -149,6 +160,15 @@ export class NotesPage {
   private handleImageError(err: any) {
     console.error(err);
     this.alertHandler.presentAlert("Humm...", "Tu n'as pas encore pris de photo... ou alors tes notes ont été supprimées...", "Je te pardonne");
+  }
+
+  /*
+   * Image saving or loading error handler
+   * @param err error
+   */
+  private imageEditErrorHandler(err: any) {
+    console.error(err);
+    this.alertHandler.presentAlert("Oups...", "Tu n'as pas encore de photo... ou alors ta photo à été supprimées...", "Je te pardonne");
   }
 
 }

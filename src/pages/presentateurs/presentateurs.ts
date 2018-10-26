@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Presentateur } from '../../entities/presentateur';
-import { Session } from '../../entities/session';
 import { PresentateursHandler } from '../../manager/presentateur/presentateur';
 import { ErrorAlertHandler } from '../../manager/error.handler/error.alert.handler';
 

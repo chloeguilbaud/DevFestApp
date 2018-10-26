@@ -15,12 +15,11 @@ import { ImagePicker } from "@ionic-native/image-picker";
 
 import { MyApp } from './app.component';
 import { Api, Sessions, Presentateurs } from '../providers';
-import { AgendaPage } from "../pages/agenda/agenda";
 import { AccueilPage } from "../pages/accueil/accueil";
 import { PresentateursPage } from "../pages/presentateurs/presentateurs";
 import { SessionsPage } from "../pages/sessions/sessions";
 import { TelephonePage } from "../pages/telephone/telephone";
-import { NotesPage } from "../pages/notes/notes";
+import { RefreshPage } from "../pages/refresh/refresh";
 
 import { Schedule } from "../providers";
 import { QueryErrorHandler } from "../manager/error.handler/query.error.handler";
@@ -28,10 +27,12 @@ import { SessionsHandler } from '../manager/session/session';
 import { PresentateursHandler } from '../manager/presentateur/presentateur'
 import { ScheduleManager } from "../manager/schedule/schedule.manager";
 import { ErrorAlertHandler } from "../manager/error.handler/error.alert.handler";
+import { ContactsHandler } from "../manager/contact/contact";
 
 import { IonicStorageModule } from '@ionic/storage';
 import { DbConf } from "./db.conf";
-import { DbManager } from "../database/db.manager";
+import { Contacts } from '@ionic-native/contacts';
+import { DbManager } from "../manager/database/db.manager";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -40,12 +41,11 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     MyApp,
-    AgendaPage,
     AccueilPage,
     PresentateursPage,
     SessionsPage,
     TelephonePage,
-    NotesPage
+    RefreshPage
   ],
   imports: [
     BrowserModule,
@@ -63,12 +63,11 @@ export function createTranslateLoader(http: HttpClient) {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AgendaPage,
     AccueilPage,
     PresentateursPage,
     SessionsPage,
     TelephonePage,
-    NotesPage
+    RefreshPage
   ],
   providers: [
     Api,
@@ -84,9 +83,11 @@ export function createTranslateLoader(http: HttpClient) {
     SplashScreen,
     SessionsHandler,
     PresentateursHandler,
+    ContactsHandler,
     Device,
     Network,
     Camera,
+    Contacts,
     File,
     ImagePicker,
     //SQLite,

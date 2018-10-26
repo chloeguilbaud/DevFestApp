@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { Sessions } from '../../providers';
 import { Session } from '../../entities/session';
 import { SessionsHandler } from '../../manager/session/session';
 import { ErrorAlertHandler } from '../../manager/error.handler/error.alert.handler';
@@ -36,6 +35,12 @@ export class SessionPage {
   openItem(presentateur: any) {
     this.navCtrl.push('PresentateurPage', {
       presentateur: presentateur
+    });
+  }
+
+  openNotes() {
+    this.navCtrl.push('NotesPage', {
+      session: this.session
     });
   }
 
