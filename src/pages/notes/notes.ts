@@ -42,7 +42,7 @@ export class NotesPage {
         this.note_txt = res;
       }
     ).catch((err) => {
-      this.noteEditErrorHandler(err);
+      this.handleNoteError(err);
     });
   }
 
@@ -65,7 +65,7 @@ export class NotesPage {
       this.alertHandler.presentAlert("Uiii!", "Vos notes ont été enregistrée avec succès!", "Ok");
     })
       .catch((err) => {
-        this.noteEditErrorHandler(err);
+        this.handleNoteError(err);
       }
     );
   }
@@ -134,22 +134,35 @@ export class NotesPage {
     // Spliting the file and the path from FILE_URI result
     let filename = imageData.substring(imageData.lastIndexOf('/')+1);
     let path =  imageData.substring(0,imageData.lastIndexOf('/')+1);
-    // Using the method readDataURL
+    // Transforming and saving image data
     this.file.readAsDataURL(path, filename).then(res => {
       this.image_src = res;
-    } );
+      console.log("parsedimage", res);
+      this.dbManager.saveSessionImage(this.s.id, res).catch((err) => {
+        this.handleImageError(err);
+      });
+    });
   }
 
   /**
    * Note saving or loading error handler
    * @param err error
    */
-  private noteEditErrorHandler(err: any) {
+  private handleNoteError(err: any) {
     console.error(err);
     this.alertHandler.presentAlert("Humm...", "Tu n'as pas encore de note... ou alors tes notes ont été supprimées...", "Je te pardonne");
   }
 
   /**
+   * Image error handler
+   * @param err error
+   */
+  private handleImageError(err: any) {
+    console.error(err);
+    this.alertHandler.presentAlert("Humm...", "Tu n'as pas encore pris de photo... ou alors tes notes ont été supprimées...", "Je te pardonne");
+  }
+
+  /*
    * Image saving or loading error handler
    * @param err error
    */
