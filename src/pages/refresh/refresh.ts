@@ -9,7 +9,14 @@ import { Network } from '@ionic-native/network';
 export class RefreshPage {
 
 
-  constructor() {
+  constructor(private network: Network) {
+
+    // Verify if internet is enabled
+    if (network.type == "none") {
+      console.log("pas d'internet");
+    } else {
+      console.log("internet dispo");
+    }
 
   }
 
