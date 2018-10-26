@@ -1,6 +1,5 @@
 # DevFestApp
-Mael MAINCHAIN
-Chloe GUILBAUD
+Mael MAINCHAIN & Chloe GUILBAUD
 
 ## Build for dev
 `npm install`
@@ -32,6 +31,8 @@ This choise enbles seperate and dedicated traitement.
 Providers have been set to enable http queries. They provide needed methods that the model will be able to directly call without having to care about the actual implementation.
 
 Beetween the provider and the model relies a manager in charge of ensuring good comunication beetween those two elements. Requiring and provideing adapted and parsed data. The provider provides data, the manager parses and gives a representative object containing the required data then given to the view controller. This enables seperated traitement.
+
+Alert if internet not available
 
 ### Database query
 

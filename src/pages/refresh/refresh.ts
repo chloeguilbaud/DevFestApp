@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { Device } from '@ionic-native/device';
 import { Network } from '@ionic-native/network';
+import { File } from '@ionic-native/file';
+import { IonicApp, NavController } from 'ionic-angular';
 
 @Component({
   selector: 'page-refresh',
   templateUrl: 'refresh.html'
 })
 export class RefreshPage {
-
 
   constructor(private network: Network) {
 
@@ -19,5 +20,5 @@ export class RefreshPage {
     }
 
   }
-
+  
 }
