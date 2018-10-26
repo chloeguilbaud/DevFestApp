@@ -9,30 +9,41 @@
 
 <ion-content>
 
-<div class="presentateur-page" padding>
-  <ion-card>
-    <img src="https://devfest.gdgnantes.com/{{ presentateur.img }}">
-    <ion-card-content>
-      <ion-card-title>
-        {{ presentateur.nom }}
-      </ion-card-title>
-      <p>{{ presentateur.bio }}</p>
-    </ion-card-content>
-  </ion-card>
-</div>
+  <div class="presentateur-page" padding>
 
-   <!-- <h2>{{ presentateur.nom }}</h2>
-    <img src="https://devfest.gdgnantes.com/{{ presentateur.img }}">
-    <p>{{ presentateur.bio }}</p>
-    <h4>Sessions</h4>
-    <ion-list>
-      <ion-item-sliding *ngFor="let session of presentateur.sessions">
-        <button ion-item (click)="openItem(session)">
-          {{ session.name }}
-        </button>
-      </ion-item-sliding>
-    </ion-list>
-    <ion-label>Add to contact</ion-label>
-    <ion-toggle [(ngModel)]="isAddContactToggled" (ionChange)="onAddToContactToggleChange()"></ion-toggle>
-  </div>-->
+    <ion-card>
+      <img src="https://devfest.gdgnantes.com/{{ presentateur.img }}">
+      <ion-card-content>
+        <ion-card-title>
+          {{ presentateur.nom }}
+        </ion-card-title>
+        <p>{{ presentateur.bio }}</p>
+
+        <ion-list>
+          <ion-item>
+            <ion-label>Add to contact</ion-label>
+            <ion-toggle checked="true" [(ngModel)]="isAddContactToggled" (ionChange)="onAddToContactToggleChange()"></ion-toggle>
+          </ion-item>
+        </ion-list>
+
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-card-title>
+          Sessions
+        </ion-card-title>
+        <ion-list>
+          <ion-item-sliding *ngFor="let session of presentateur.sessions">
+            <button ion-item (click)="openItem(session)">
+              {{ session.name }}
+            </button>
+          </ion-item-sliding>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+
 </ion-content>
