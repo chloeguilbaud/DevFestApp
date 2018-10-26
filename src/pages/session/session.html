@@ -9,19 +9,42 @@
 
 <ion-content>
   <div class="session-page" padding>
-    <h2>{{ session.name }}</h2>
-    <img *ngIf="session.img" src="https://devfest.gdgnantes.com{{ session.img }}">
-    <h2>Description</h2>
-    <p>{{ session.description }}</p>
-    <h3>{{ session.type }}</h3>
-    <h4>Presentateurs</h4>
-    <ion-list>
-      <ion-item-sliding *ngFor="let presentateur of session.presentateurs">
-        <button ion-item (click)="openItem(presentateur)">
-          {{ presentateur.nom }}
-        </button>
-      </ion-item-sliding>
-    </ion-list>
+
+    <ion-card>
+      <img *ngIf="session.img" src="https://devfest.gdgnantes.com{{ session.img }}">
+      <ion-card-content>
+        <ion-card-title>
+          {{ session.name }}
+        </ion-card-title>
+
+        <h2>Description</h2>
+        <p>{{ session.description }}</p>
+        <h3>{{ session.type }}</h3>
+
+      </ion-card-content>
+    </ion-card>
+
+
+    <ion-card>
+      <ion-card-content>
+        <ion-card-title>
+          Presentateurs
+        </ion-card-title>
+        <ion-list>
+          <ion-item-sliding *ngFor="let presentateur of session.presentateurs">
+            <button ion-item (click)="openItem(presentateur)">
+              <ion-avatar item-start>
+                <img src="https://devfest.gdgnantes.com/{{ presentateur.img }}">
+              </ion-avatar>
+              {{ presentateur.nom }}
+            </button>
+          </ion-item-sliding>
+        </ion-list>
+
+      </ion-card-content>
+    </ion-card>
+
     <button ion-button block outline style="text-transform: none;" (click)="openNotes()">Notes et photos</button>
+
   </div>
 </ion-content>
