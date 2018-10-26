@@ -19,7 +19,7 @@
       <p [hidden]="hidedate" padding-bottom>Du {{datedebut}} au {{datefin}}</p>
     </div>
 
-    <button ion-button block outline style="text-transform: none;">Voir les sessions</button>
-    <button ion-button block outline style="text-transform: none;">Voir les présentateurs</button>
+    <button ion-button block outline (click)="openPage('Sessions')" style="text-transform: none;">Voir les sessions</button>
+    <button ion-button block outline (click)="openPage('Présentateurs')" style="text-transform: none;">Voir les présentateurs</button>
 
 </ion-content>

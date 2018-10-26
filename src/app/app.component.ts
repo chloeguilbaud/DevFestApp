@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { Platform, MenuController, Nav } from 'ionic-angular';
+import { Platform, MenuController, Nav, Events } from 'ionic-angular';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -26,14 +26,22 @@ export class MyApp {
     public platform: Platform,
     public menu: MenuController,
     public statusBar: StatusBar,
-    public splashScreen: SplashScreen
+    public splashScreen: SplashScreen,
+    public events: Events
   ) {
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
+
       statusBar.styleDefault();
       splashScreen.hide();
 
+      // Get l'évenement du changement de tab extérieur
+      events.subscribe('changetab', (wantedPage, time) => {
+        for (let i = 0; i < this.pages.length; i++) {
+          if (this.pages[i].title === wantedPage) {
+            this.nav.setRoot(this.pages[i].component);
+          }
+        }
+      });
     });
 
     // List des pages permettant la création du menu
