@@ -11,14 +11,21 @@ import {ErrorAlertHandler} from "../../manager/error.handler/error.alert.handler
 })
 export class RefreshPage {
 
+  public isConnected: boolean;
+
   constructor(private network: Network, private alertHandler: ErrorAlertHandler) {
 
     // Verify if internet is enabled
     if (network.type == "none") {
-      console.log("Internet disabled");
+
+      this.isConnected = false;
       alertHandler.presentAlert("Network", "Y a pas internet... C'est pas une bonne idée de tout vider...", "Tu as raison.");
+
+      console.log("Internet disabled - impossible to empty cache");
+
     } else {
-      console.log("Internet enabled");
+
+      this.isConnected = true;
 
       // Empty cache
       if (navigator.serviceWorker.controller) {
@@ -29,6 +36,9 @@ export class RefreshPage {
         });
 
       }
+
+      console.log("Internet enabled - cache empty");
+
     }
 
   }
