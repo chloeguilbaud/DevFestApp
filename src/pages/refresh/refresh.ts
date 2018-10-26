@@ -12,7 +12,13 @@ export class RefreshPage {
 
 
   constructor() {
-    
+    if (navigator.serviceWorker.controller) {
+
+      navigator.serviceWorker.controller.postMessage({
+          "command": "CLEAR_CACHE",
+          "message": "CLEAR_CACHE"
+      });
+  }
   }
 
 }

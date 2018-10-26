@@ -6,7 +6,6 @@
 
 'use strict';
 importScripts('./build/sw-toolbox.js');
-console.log('fffff')
 self.toolbox.options.cache = {
   name: 'ionic-cache'
 };
@@ -121,4 +120,24 @@ self.addEventListener("fetch", function(event) {
     })
   );
 });
+
+self.addEventListener('message', event => {
+  if (event.data.command === 'CLEAR_CACHE') {
+    caches.delete('ionic-cache');
+    console.log('cleared ionic-cache');
+    caches
+      .open('ionic-cache')
+      .then(function(cache) {
+        // once created, lets add some local resouces
+        return cache.addAll([
+          './build/main.js',
+          './build/main.css'
+        ]);
+      })
+      .then(function(){
+        console.log('Service worker is ready, and assets are cached');
+      });
+  }
+})
+
 self.skipWaiting();
