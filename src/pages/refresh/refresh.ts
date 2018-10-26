@@ -10,15 +10,21 @@ import { IonicApp, NavController } from 'ionic-angular';
 })
 export class RefreshPage {
 
+  constructor(private network: Network) {
+    // Verify if internet is enabled
+    if (network.type == "none") {
+      console.log("pas d'internet");
+    } else {
+      console.log("internet dispo");
+      if (navigator.serviceWorker.controller) {
 
-  constructor() {
-    if (navigator.serviceWorker.controller) {
+        navigator.serviceWorker.controller.postMessage({
+            "command": "CLEAR_CACHE",
+            "message": "CLEAR_CACHE"
+        });
+      }
+    }
 
-      navigator.serviceWorker.controller.postMessage({
-          "command": "CLEAR_CACHE",
-          "message": "CLEAR_CACHE"
-      });
   }
-  }
-
+  
 }

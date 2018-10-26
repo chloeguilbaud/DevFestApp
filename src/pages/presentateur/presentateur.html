@@ -8,8 +8,20 @@
 
 
 <ion-content>
-  <div class="presentateur-page" padding>
-    <h2>{{ presentateur.nom }}</h2>
+
+<div class="presentateur-page" padding>
+  <ion-card>
+    <img src="https://devfest.gdgnantes.com/{{ presentateur.img }}">
+    <ion-card-content>
+      <ion-card-title>
+        {{ presentateur.nom }}
+      </ion-card-title>
+      <p>{{ presentateur.bio }}</p>
+    </ion-card-content>
+  </ion-card>
+</div>
+
+   <!-- <h2>{{ presentateur.nom }}</h2>
     <img src="https://devfest.gdgnantes.com/{{ presentateur.img }}">
     <p>{{ presentateur.bio }}</p>
     <h4>Sessions</h4>
@@ -22,5 +34,5 @@
     </ion-list>
     <ion-label>Add to contact</ion-label>
     <ion-toggle [(ngModel)]="isAddContactToggled" (ionChange)="onAddToContactToggleChange()"></ion-toggle>
-  </div>
+  </div>-->
 </ion-content>

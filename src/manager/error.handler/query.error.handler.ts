@@ -37,7 +37,7 @@ export class QueryErrorHandler {
       console.error(
         `Backend returned code ${error.status}, ` +
         `body was: ${error.error}`);
-      return "Requête incorrecte envoyée au serveur. Veuillez contacter le support."
+      return "Soit t'as pas internet soit la requête envoyée au serveur est incorrecte. Contact le support."
     }
   };
 
