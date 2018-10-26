@@ -15,6 +15,9 @@
   <ion-list>
     <ion-item-sliding *ngFor="let presentateur of presentateurs">
       <button ion-item (click)="openItem(presentateur)">
+        <ion-avatar item-start>
+          <img src="https://devfest.gdgnantes.com/{{ presentateur.img }}">
+        </ion-avatar>
         {{ presentateur.nom }}
       </button>
     </ion-item-sliding>
