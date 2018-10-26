@@ -30,7 +30,7 @@ export class NotesPage {
     this.s = navParams.get('session');
 
     this.loadNotes();
-    //this.loadImage();
+    this.loadImage();
 
   }
 
