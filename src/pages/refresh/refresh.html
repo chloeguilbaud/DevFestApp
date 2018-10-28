@@ -12,8 +12,15 @@
 
 <ion-content padding>
 
-  <h3 *ngIf="isConnected" ion-text color="secondary">Votre cache à été mis à jour ;)</h3>
+  <div *ngIf="isConnected">
+    <ion-icon ios="ios-happy" md="md-happy"></ion-icon>
+    <p ion-text>Votre cache à été mis à jour ;)</p>
+  </div>
 
-  <h3 *ngIf="!isConnected" ion-text color="danger">Il te faut une connexion internet pour mettre à jour le cache...</h3>
+  <div *ngIf="!isConnected">
+    <ion-icon  ios="ios-bug" md="md-bug"></ion-icon>
+    <p ion-text>Il te faut une connexion internet pour mettre à jour le cache...</p>
+  </div>
+
 
 </ion-content>

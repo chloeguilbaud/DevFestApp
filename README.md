@@ -43,3 +43,5 @@ Indeed, when needed the view controller can require or save data in the data bas
 This conception enables independ processes. At some point in this project we had complication regarding the database techinical choises. We first wanted to work with sqlite. It has been implemented in the manager and the controlerr could access data witout having to care about how the manager would get it. We then decided to use IndexDB. We just had to change the database module implementation and no need to make any update in the controller. 
 
 All this project has been organised in indepent module alowing updates without any inpact at all on the other modules.
+
+cache refresh
