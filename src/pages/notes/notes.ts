@@ -121,7 +121,9 @@ export class NotesPage {
    */
   private displayAndSaveImg(imageData: string) {
     // Saving image in data base
-    this.dbManager.saveSessionImage(this.s.id, imageData);
+    this.dbManager.saveSessionImage(this.s.id, imageData).catch((err) => {
+      this.handleImageError(err);
+    });
     // Parse image
     this.displayImg(imageData);
   }
@@ -138,9 +140,6 @@ export class NotesPage {
     this.file.readAsDataURL(path, filename).then(res => {
       this.image_src = res;
       console.log("parsedimage", res);
-      this.dbManager.saveSessionImage(this.s.id, res).catch((err) => {
-        this.handleImageError(err);
-      });
     });
   }
 
