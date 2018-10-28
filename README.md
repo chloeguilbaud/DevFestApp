@@ -1,4 +1,4 @@
-# DevFestApp
+# DevFest App
 Mael MAINCHAIN & Chloe GUILBAUD
 
 ## Build for dev
@@ -14,34 +14,45 @@ Mael MAINCHAIN & Chloe GUILBAUD
 ## Run Ionic Project
 `ionic serve`
 
-## TODO
-Gestion du mode déconnecté
-Gestion des erreurs
-Balise HTML
-PAs de photo sur note page en browser
+## Disconnected mode
 
-## Handling errors
-Connexion, picture taking, database acces,... many errors can happen and they have to be indicated to the user. A specific manager has been dedicated to that task and iq located in the `error.handler` package. The error managers enable specific process (`query.error.handler`: , `error.alert.handler`: basic error alert).
-This choise enbles seperate and dedicated traitement.
+A Service Worker enables auto saving in the cache at first request. It can then be refreshed by the user through the 'Refresh' page. If
+internet is enabled the cache is emptied and automatically saved again. If not the user is advertised.
 
 ## Structure and architecture
 
+## Handling errors
+
+Connexion, picture taking, database access,... many errors can occur and they have to be indicated to the user. 
+A specific manager has been dedicated to that task and is located in the `error.handler` package. 
+The error managers enables specific process (`query.error.handler`: , `error.alert.handler`: basic error alert).
+This choose enables separate and dedicated process.
+
 ### Online query
 
-Providers have been set to enable http queries. They provide needed methods that the model will be able to directly call without having to care about the actual implementation.
+Providers have been set to enable http queries. They provide needed methods so that the model can directly request the server
+without having to care about the actual implementation and protocol access.
 
-Beetween the provider and the model relies a manager in charge of ensuring good comunication beetween those two elements. Requiring and provideing adapted and parsed data. The provider provides data, the manager parses and gives a representative object containing the required data then given to the view controller. This enables seperated traitement.
+Between the provider and the model their is a manager in charge of ensuring good communication between those two elements. 
+The provider provides data, the manager parses and gives a representative
+ object containing the required data which is then given to the view controller. This enables separated treatment.
+ The manager is in charge of requiring and providing adapted and parsed data. 
 
-Alert if internet not available
+An alert is displayed if internet is not available.
 
 ### Database query
 
-Architecture has been built and thaugh in order to enable independent modules. With that, if needed, one module can be changed without impacting the other ones or the model.
+Architecture has been built and thought in order to enable independent modules. Thanks to this, if needed, one module can be changed 
+without impacting the other ones or the model.
 
-Indeed, when needed the view controller can require or save data in the data base through the dedicated manager `db.manager`.
+Indeed, when needed the view controller can require or save data in the data base through the dedicated manager `db.manager`. This conception enables independent processes. 
 
-This conception enables independ processes. At some point in this project we had complication regarding the database techinical choises. We first wanted to work with sqlite. It has been implemented in the manager and the controlerr could access data witout having to care about how the manager would get it. We then decided to use IndexDB. We just had to change the database module implementation and no need to make any update in the controller. 
+At some point in this project we had complication regarding the database technical choices. 
+We first wanted to work with SQLite. It has been implemented in the manager. The controller could then access data
+ without having to care about how the manager would get it. 
+ We then decided to use IndexDB instead and test if this architecture would enable easy technical change. 
+ And it did, we just had to change the database module implementation and no need to make any update in the controller. 
 
-All this project has been organised in indepent module alowing updates without any inpact at all on the other modules.
+All this project has been organised in independent modules allowing updates without any impact at all on the other modules.
 
-cache refresh
+
