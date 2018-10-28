@@ -14,7 +14,7 @@ import { RefreshPage } from '../pages/refresh/refresh';
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp {
+export class DevFest {
 
   @ViewChild(Nav) nav: Nav;
 

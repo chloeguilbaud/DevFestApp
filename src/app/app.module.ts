@@ -13,7 +13,7 @@ import { Camera } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { ImagePicker } from "@ionic-native/image-picker";
 
-import { MyApp } from './app.component';
+import { DevFest } from './app.component';
 import { Api, Sessions, Presentateurs } from '../providers';
 import { AccueilPage } from "../pages/accueil/accueil";
 import { PresentateursPage } from "../pages/presentateurs/presentateurs";
@@ -40,7 +40,7 @@ export function createTranslateLoader(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    MyApp,
+    DevFest,
     AccueilPage,
     PresentateursPage,
     SessionsPage,
@@ -49,7 +49,7 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(DevFest),
     IonicStorageModule.forRoot(),
     HttpClientModule,
     TranslateModule.forRoot({
@@ -62,7 +62,7 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    DevFest,
     AccueilPage,
     PresentateursPage,
     SessionsPage,
